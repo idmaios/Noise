@@ -11,7 +11,7 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBAction func presentNotificationController(sender: UIButton) {
-        
+        DPNotificationController(message: "tmp").show()
     }
 }
 
