@@ -9,15 +9,19 @@
 import Foundation
 import UIKit
 
-class DPNotificationController: UIViewController {
+var flag = 1
+
+public class DPNotificationController: UIViewController {
     
     let message: String
     let icon: UIImage?
     let transitionDelegate = DPPresentationDelegate()
     let swipeGesture = UISwipeGestureRecognizer()
     
+    weak var notificationOperation: DPNotificationViewOperation?
     
-    init(message: String, icon: UIImage? = nil) {
+    
+    public init(message: String, icon: UIImage? = nil) {
         self.message = message
         self.icon    = icon
         
@@ -27,28 +31,36 @@ class DPNotificationController: UIViewController {
         transitioningDelegate  = transitionDelegate
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         self.message = ""
         self.icon    = nil
         
         super.init(coder: aDecoder)
     }
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         
         swipeGesture.direction = .Up
         swipeGesture.addTarget(self, action: #selector(closeNotification))
         view.addGestureRecognizer(swipeGesture)
         
-        view.backgroundColor = UIColor.redColor()
+        view.backgroundColor = UIColor.greenColor()
+        switch flag {
+        case 1: view.backgroundColor = UIColor.redColor()
+        case 2: view.backgroundColor = UIColor.greenColor()
+        case 3: view.backgroundColor = UIColor.purpleColor()
+        case 4: view.backgroundColor = UIColor.yellowColor()
+        case 5: view.backgroundColor = UIColor.whiteColor()
+        case 6: view.backgroundColor = UIColor.blueColor()
+        case 7: view.backgroundColor = UIColor.magentaColor()
+        default: break
+        }
+        flag += 1
     }
     
-    func closeNotification() {
-        dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    func show() {
+    func showNotification() {
+        
         guard let delegate = UIApplication.sharedApplication().delegate else { return }
         guard let aWindow = delegate.window else { return }
         guard let bWindow = aWindow else { return }
@@ -61,10 +73,26 @@ class DPNotificationController: UIViewController {
         }
         
         topViewController.presentViewController(self, animated: true) {
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(5 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) { [weak self] in
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(flag) * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) { [weak self] in
                 guard let unwrappedSelf = self else { return }
                 unwrappedSelf.closeNotification()
             }
         }
+    }
+    
+    func closeNotification() {
+        guard let _ = presentingViewController else { return }
+        
+        dismissViewControllerAnimated(true) {
+            guard let operation = self.notificationOperation where operation.cancelled == false else { return }
+            operation.completeOperation()
+        }
+    }
+    
+    public func show() {
+        
+        let operation = DPNotificationViewOperation(notificationController: self)
+        notificationOperation = operation
+        DPNotificationManager.manager.addPresentationOperation(operation)
     }
 }
