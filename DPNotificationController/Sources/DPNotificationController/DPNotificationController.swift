@@ -13,12 +13,13 @@ var flag = 1
 
 public class DPNotificationController: UIViewController {
     
-    let message: String
-    let icon: UIImage?
     let transitionDelegate = DPPresentationDelegate()
     let swipeGesture = UISwipeGestureRecognizer()
     
     weak var notificationOperation: DPNotificationViewOperation?
+    
+    private let message: String
+    private let icon: UIImage?
     
     
     public init(message: String, icon: UIImage? = nil) {

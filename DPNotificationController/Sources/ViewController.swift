@@ -20,6 +20,5 @@ class ViewController: UIViewController {
             DPNotificationManager.manager.cancelAll()
         }
     }
-    }
 }
 
