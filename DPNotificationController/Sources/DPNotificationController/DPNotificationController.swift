@@ -11,25 +11,59 @@ import UIKit
 
 var flag = 1
 
-public class DPNotificationController: UIViewController {
+public class DPNotificationView: UIView {
+
+    private let DPNotificationViewDefaultAnimationTime = 0.3
     
-    let transitionDelegate = DPPresentationDelegate()
-    let swipeGesture = UISwipeGestureRecognizer()
-    
-    weak var notificationOperation: DPNotificationViewOperation?
+    private let swipeGesture = UISwipeGestureRecognizer()
+    private weak var notificationOperation: DPNotificationViewOperation?
     
     private let message: String
     private let icon: UIImage?
+    
+    private var topViewController: UIViewController? {
+        get {
+            guard let delegate = UIApplication.sharedApplication().delegate else { return nil }
+            guard let aWindow = delegate.window else { return nil }
+            guard let bWindow = aWindow else { return nil }
+            guard var topViewController = bWindow.rootViewController else { return nil }
+            
+            while (topViewController.presentedViewController != nil) {
+                topViewController = topViewController.presentedViewController!
+            }
+            
+            return topViewController
+        }
+    }
     
     
     public init(message: String, icon: UIImage? = nil) {
         self.message = message
         self.icon    = icon
         
-        super.init(nibName: nil, bundle: nil)
+        super.init(frame: CGRectZero)
         
-        modalPresentationStyle = .Custom
-        transitioningDelegate  = transitionDelegate
+        swipeGesture.direction = .Up
+        swipeGesture.addTarget(self, action: #selector(closeNotification))
+        addGestureRecognizer(swipeGesture)   
+    }
+    
+    public override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        
+        switch flag % 7 {
+            case 0: backgroundColor = UIColor.magentaColor()
+            case 1: backgroundColor = UIColor.redColor()
+            case 2: backgroundColor = UIColor.greenColor()
+            case 3: backgroundColor = UIColor.purpleColor()
+            case 4: backgroundColor = UIColor.yellowColor()
+            case 5: backgroundColor = UIColor.whiteColor()
+            case 6: backgroundColor = UIColor.blueColor()
+            default: break
+        }
+        
+        guard let _ = superview else { return }
+        flag += 1
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -39,41 +73,14 @@ public class DPNotificationController: UIViewController {
         super.init(coder: aDecoder)
     }
     
-    override public func viewDidLoad() {
-        super.viewDidLoad()
-        
-        swipeGesture.direction = .Up
-        swipeGesture.addTarget(self, action: #selector(closeNotification))
-        view.addGestureRecognizer(swipeGesture)
-        
-        view.backgroundColor = UIColor.greenColor()
-        switch flag {
-        case 1: view.backgroundColor = UIColor.redColor()
-        case 2: view.backgroundColor = UIColor.greenColor()
-        case 3: view.backgroundColor = UIColor.purpleColor()
-        case 4: view.backgroundColor = UIColor.yellowColor()
-        case 5: view.backgroundColor = UIColor.whiteColor()
-        case 6: view.backgroundColor = UIColor.blueColor()
-        case 7: view.backgroundColor = UIColor.magentaColor()
-        default: break
-        }
-        flag += 1
-    }
-    
     func showNotification() {
+        guard let topViewController = topViewController else { return }
         
-        guard let delegate = UIApplication.sharedApplication().delegate else { return }
-        guard let aWindow = delegate.window else { return }
-        guard let bWindow = aWindow else { return }
-        guard let rootViewController = bWindow.rootViewController else { return }
+        frame = CGRect(origin: CGPointZero, size: CGSize(width: topViewController.view.frame.width, height: 100))
+        layoutIfNeeded()
+        topViewController.view.addSubview(self)
         
-        var topViewController = rootViewController
-        
-        while (topViewController.presentedViewController != nil) {
-            topViewController = topViewController.presentedViewController!
-        }
-        
-        topViewController.presentViewController(self, animated: true) {
+        animatePresentation(presentation: true) { finished in
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(flag) * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) { [weak self] in
                 guard let unwrappedSelf = self else { return }
                 unwrappedSelf.closeNotification()
@@ -81,10 +88,28 @@ public class DPNotificationController: UIViewController {
         }
     }
     
-    func closeNotification() {
-        guard let _ = presentingViewController else { return }
+    func animatePresentation(presentation presentation: Bool, completion: ((Bool) -> ())? = nil) {
         
-        dismissViewControllerAnimated(true) {
+        if presentation {
+            var newFrame = self.frame
+            newFrame.origin.y = -newFrame.size.height
+            self.frame = newFrame
+        }
+        
+        UIView.animateWithDuration(DPNotificationViewDefaultAnimationTime, delay: 0, options: .TransitionNone, animations: {
+            var newFrame = self.frame
+            newFrame.origin.y = presentation ? 0 : -newFrame.size.height
+            self.frame = newFrame
+            
+        }, completion: completion)
+    }
+    
+    func closeNotification() {
+        guard let _ = superview else { return }
+        
+        animatePresentation(presentation: false) { finished in
+            self.removeFromSuperview()
+            
             guard let operation = self.notificationOperation where operation.cancelled == false else { return }
             operation.completeOperation()
         }

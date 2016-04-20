@@ -11,9 +11,8 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBAction func presentNotificationController(sender: UIButton) {
-        flag = 1
-        for _ in 1...7 {
-            DPNotificationController(message: "tmp").show()
+        for _ in 1...10 {
+            DPNotificationView(message: "tmp").show()
         }
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(8 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) {

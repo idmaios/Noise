@@ -13,10 +13,6 @@
 		01D066A41CC63347001863DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01D066A31CC63347001863DA /* Assets.xcassets */; };
 		01D066A71CC63347001863DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01D066A51CC63347001863DA /* LaunchScreen.storyboard */; };
 		01D066B31CC63579001863DA /* DPNotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D066B21CC63579001863DA /* DPNotificationController.swift */; };
-		01D066B51CC63608001863DA /* DPPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D066B41CC63608001863DA /* DPPresentationController.swift */; };
-		01D066B71CC63664001863DA /* DPPresentationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D066B61CC63664001863DA /* DPPresentationDelegate.swift */; };
-		01D066B91CC63780001863DA /* DPPresentationAnimtor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D066B81CC63780001863DA /* DPPresentationAnimtor.swift */; };
-		01D066BE1CC64855001863DA /* DPDimmingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D066BD1CC64855001863DA /* DPDimmingView.swift */; };
 		01D066C11CC65A90001863DA /* DPNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D066C01CC65A90001863DA /* DPNotificationManager.swift */; };
 		01D066C31CC65EA2001863DA /* DPNotificationViewOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D066C21CC65EA2001863DA /* DPNotificationViewOperation.swift */; };
 /* End PBXBuildFile section */
@@ -30,10 +26,6 @@
 		01D066A61CC63347001863DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		01D066A81CC63347001863DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01D066B21CC63579001863DA /* DPNotificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DPNotificationController.swift; sourceTree = "<group>"; };
-		01D066B41CC63608001863DA /* DPPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DPPresentationController.swift; sourceTree = "<group>"; };
-		01D066B61CC63664001863DA /* DPPresentationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DPPresentationDelegate.swift; sourceTree = "<group>"; };
-		01D066B81CC63780001863DA /* DPPresentationAnimtor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DPPresentationAnimtor.swift; sourceTree = "<group>"; };
-		01D066BD1CC64855001863DA /* DPDimmingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DPDimmingView.swift; sourceTree = "<group>"; };
 		01D066C01CC65A90001863DA /* DPNotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DPNotificationManager.swift; sourceTree = "<group>"; };
 		01D066C21CC65EA2001863DA /* DPNotificationViewOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DPNotificationViewOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,37 +99,9 @@
 			isa = PBXGroup;
 			children = (
 				01D066BF1CC65A75001863DA /* Manager */,
-				01D066BC1CC64838001863DA /* Animator */,
-				01D066BB1CC6482B001863DA /* PresentationControl */,
-				01D066BA1CC64825001863DA /* Views */,
 				01D066B21CC63579001863DA /* DPNotificationController.swift */,
 			);
 			path = DPNotificationController;
-			sourceTree = "<group>";
-		};
-		01D066BA1CC64825001863DA /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				01D066BD1CC64855001863DA /* DPDimmingView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		01D066BB1CC6482B001863DA /* PresentationControl */ = {
-			isa = PBXGroup;
-			children = (
-				01D066B41CC63608001863DA /* DPPresentationController.swift */,
-				01D066B61CC63664001863DA /* DPPresentationDelegate.swift */,
-			);
-			path = PresentationControl;
-			sourceTree = "<group>";
-		};
-		01D066BC1CC64838001863DA /* Animator */ = {
-			isa = PBXGroup;
-			children = (
-				01D066B81CC63780001863DA /* DPPresentationAnimtor.swift */,
-			);
-			path = Animator;
 			sourceTree = "<group>";
 		};
 		01D066BF1CC65A75001863DA /* Manager */ = {
@@ -221,12 +185,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				01D066B31CC63579001863DA /* DPNotificationController.swift in Sources */,
-				01D066B51CC63608001863DA /* DPPresentationController.swift in Sources */,
-				01D066B71CC63664001863DA /* DPPresentationDelegate.swift in Sources */,
 				01D0669F1CC63347001863DA /* ViewController.swift in Sources */,
 				01D066C11CC65A90001863DA /* DPNotificationManager.swift in Sources */,
-				01D066BE1CC64855001863DA /* DPDimmingView.swift in Sources */,
-				01D066B91CC63780001863DA /* DPPresentationAnimtor.swift in Sources */,
 				01D066C31CC65EA2001863DA /* DPNotificationViewOperation.swift in Sources */,
 				01D0669D1CC63347001863DA /* AppDelegate.swift in Sources */,
 			);
