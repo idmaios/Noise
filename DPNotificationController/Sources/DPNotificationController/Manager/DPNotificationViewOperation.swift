@@ -10,7 +10,7 @@ import Foundation
 
 class DPNotificationViewOperation: NSOperation {
     
-    let notificationController: DPNotificationView
+    let notificationController: DPNotificationViewController
 
     override var asynchronous: Bool {
         return false
@@ -37,7 +37,7 @@ class DPNotificationViewOperation: NSOperation {
     private var _finished = false
     
     
-    init(notificationController: DPNotificationView) {
+    init(notificationController: DPNotificationViewController) {
         self.notificationController = notificationController
         
         super.init()
