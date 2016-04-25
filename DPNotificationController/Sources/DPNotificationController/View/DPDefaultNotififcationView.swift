@@ -45,9 +45,8 @@ class DPXibLoadView: UIView {
         frame = CGRect(origin: frame.origin, size: correctSize)
         view.frame = CGRect(origin: view.frame.origin, size: correctSize)
         
-        view.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+        view.autoresizingMask = [.FlexibleWidth, .FlexibleTopMargin]
         backgroundColor = .clearColor()
-        translatesAutoresizingMaskIntoConstraints = false
         
         addSubview(view)
     }
@@ -64,7 +63,9 @@ class DPDefaultNotififcationView: DPXibLoadView, DPNotficationViewCompatible {
     
     @IBOutlet var iconView: UIImageView!
     @IBOutlet var messageLabel: UILabel!
-    @IBOutlet var iconConstraint: NSLayoutConstraint!
+    
+    let DPDefaultNotififcationViewMaxHeight: CGFloat = 66
+    let DPDefaultNotififcationViewMinHeight: CGFloat = 44
     
     
     required init(maxSize: CGSize, message: String, icon: UIImage? = nil, xibName: String? = nil, buttonAction: (() -> ())? = nil) {
@@ -74,7 +75,10 @@ class DPDefaultNotififcationView: DPXibLoadView, DPNotficationViewCompatible {
         messageLabel.text = message
         
         if icon == nil {
-            iconConstraint.priority = UILayoutPriorityDefaultLow
+            var newFrame = messageLabel.frame
+            newFrame.origin.x = view.layoutMargins.left
+            newFrame.size.width = maxSize.width - view.layoutMargins.left - view.layoutMargins.right
+            messageLabel.frame = newFrame
         }
     }
     
@@ -84,12 +88,18 @@ class DPDefaultNotififcationView: DPXibLoadView, DPNotficationViewCompatible {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        guard let superview = self.superview else { return }
+        guard let _ = self.superview else { return }
         
-        messageLabel.preferredMaxLayoutWidth = superview.frame.width - messageLabel.frame.origin.x - self.view.layoutMargins.right
+        view.frame = bounds
+        
+        let maxLabelHeight = DPDefaultNotififcationViewMaxHeight - view.layoutMargins.bottom - view.layoutMargins.top
+        let labelMaxSize = CGSize(width: messageLabel.frame.width, height: maxLabelHeight)
+        let height = ceil(messageLabel.sizeThatFits(labelMaxSize).height)
+        
+        var newFrame = frame
+        newFrame.size.height = min(max(DPDefaultNotififcationViewMinHeight, height), DPDefaultNotififcationViewMaxHeight)
+        frame = newFrame
+        
+        view.frame = bounds
     }
-    
-//    override func intrinsicContentSize() -> CGSize {
-//        return CGSize(width: frame.width, height: -1)
-//    }
 }
