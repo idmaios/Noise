@@ -11,9 +11,10 @@ import UIKit
 
 public class DPNotification {
     public class func showNotificationWith(message message: String, title: String? = nil, icon: UIImage? = nil, action: (() -> ())? = nil) {
-        guard let controller = DPNotificationViewController() else { return }
+        let controller = DPNotificationViewController() {
+            DPDefaultNotififcationView(maxSize: $0, message: message, title: title, icon: icon, buttonAction: action)
+        }
         
-        controller.view = DPDefaultNotififcationView(maxSize: controller.maxSize, message: message, title: title, icon: icon, buttonAction: action)
         controller.show()
     }
 }

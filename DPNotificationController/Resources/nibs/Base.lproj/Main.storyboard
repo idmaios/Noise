@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="DPNotificationController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="DPNotificationController" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uch-jI-aaF">
-                                <rect key="frame" x="273.5" y="285" width="53" height="30"/>
+                                <rect key="frame" x="273" y="285" width="53" height="30"/>
                                 <state key="normal" title="Present">
                                     <color key="titleColor" red="0.50588235290000005" green="0.63137254899999995" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -26,16 +26,99 @@
                                     <action selector="presentNotificationController:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZWq-A2-YHd"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LWZ-A3-SHq">
+                                <rect key="frame" x="229.5" y="323" width="141" height="30"/>
+                                <state key="normal" title="NavigationController">
+                                    <color key="titleColor" red="0.50588235290000005" green="0.63137254899999995" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="gR3-mZ-bNc" kind="presentation" id="uHd-6L-ds9"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.12549019610000001" green="0.14117647059999999" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="LWZ-A3-SHq" firstAttribute="top" secondItem="uch-jI-aaF" secondAttribute="bottom" constant="8" id="7js-bb-Bqv"/>
                             <constraint firstItem="uch-jI-aaF" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Oyh-0r-g6t"/>
+                            <constraint firstItem="LWZ-A3-SHq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UTN-CL-0qB"/>
                             <constraint firstItem="uch-jI-aaF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jjw-I0-14e"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="0bv-1x-S0c">
+            <objects>
+                <navigationController id="gR3-mZ-bNc" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="pC9-R7-33n">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Sxo-Z7-CnQ" kind="relationship" relationship="rootViewController" id="7P8-m2-UJt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ogO-AS-bs7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1354" y="450"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="cFZ-CP-FmC">
+            <objects>
+                <viewController id="Sxo-Z7-CnQ" customClass="DetailViewController" customModule="DPNotificationController" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="AhX-dV-mbr"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ell-Tl-8bQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0kp-Nr-edl">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nf9-yg-6zv">
+                                <rect key="frame" x="211" y="247" width="178" height="30"/>
+                                <state key="normal" title="Present in View Controller">
+                                    <color key="titleColor" red="0.50588235290000005" green="0.63137254899999995" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="presentInViewController:" destination="Sxo-Z7-CnQ" eventType="touchUpInside" id="1yU-UB-X2f"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Vx-JW-JyJ">
+                                <rect key="frame" x="192" y="323" width="217" height="30"/>
+                                <state key="normal" title="Present in Navigation Controller">
+                                    <color key="titleColor" red="0.50588235290000005" green="0.63137254899999995" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="presentInNavigationController:" destination="Sxo-Z7-CnQ" eventType="touchUpInside" id="aLX-BI-CUv"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mt5-fK-SPG">
+                                <rect key="frame" x="168" y="285" width="265" height="30"/>
+                                <state key="normal" title="Present in View Controller with hidding">
+                                    <color key="titleColor" red="0.50588235290000005" green="0.63137254899999995" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="presentInViewControllerWithNavBarHidding:" destination="Sxo-Z7-CnQ" eventType="touchUpInside" id="T9D-SJ-y7F"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.76862745098039209" green="0.78431372549019607" blue="0.77647058823529413" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Nf9-yg-6zv" firstAttribute="centerX" secondItem="0kp-Nr-edl" secondAttribute="centerX" id="G3C-jX-oPa"/>
+                            <constraint firstItem="1Vx-JW-JyJ" firstAttribute="top" secondItem="mt5-fK-SPG" secondAttribute="bottom" constant="8" id="Qmj-2p-fyP"/>
+                            <constraint firstItem="mt5-fK-SPG" firstAttribute="centerY" secondItem="0kp-Nr-edl" secondAttribute="centerY" id="W9s-RO-kYV"/>
+                            <constraint firstItem="mt5-fK-SPG" firstAttribute="top" secondItem="Nf9-yg-6zv" secondAttribute="bottom" constant="8" id="d54-uZ-sTh"/>
+                            <constraint firstItem="mt5-fK-SPG" firstAttribute="centerX" secondItem="0kp-Nr-edl" secondAttribute="centerX" id="sNK-cP-pnR"/>
+                            <constraint firstItem="1Vx-JW-JyJ" firstAttribute="centerX" secondItem="0kp-Nr-edl" secondAttribute="centerX" id="spZ-zD-NUG"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="FDj-q4-Q2u"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qI5-GZ-8mH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2111" y="450"/>
         </scene>
     </scenes>
 </document>

@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01101C891CCE42680095076F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01101C881CCE42680095076F /* DetailViewController.swift */; };
 		01CCBE1D1CC8F53100B10BBA /* DPDefaultNotififcationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01CCBE1C1CC8F53100B10BBA /* DPDefaultNotififcationView.xib */; };
 		01CCBE201CCA205500B10BBA /* DPNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CCBE1F1CCA205500B10BBA /* DPNotification.swift */; };
 		01D0669D1CC63347001863DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D0669C1CC63347001863DA /* AppDelegate.swift */; };
-		01D0669F1CC63347001863DA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D0669E1CC63347001863DA /* ViewController.swift */; };
+		01D0669F1CC63347001863DA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D0669E1CC63347001863DA /* MainViewController.swift */; };
 		01D066A21CC63347001863DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01D066A01CC63347001863DA /* Main.storyboard */; };
 		01D066A41CC63347001863DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01D066A31CC63347001863DA /* Assets.xcassets */; };
 		01D066A71CC63347001863DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01D066A51CC63347001863DA /* LaunchScreen.storyboard */; };
@@ -21,11 +22,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		01101C881CCE42680095076F /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		01CCBE1C1CC8F53100B10BBA /* DPDefaultNotififcationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DPDefaultNotififcationView.xib; sourceTree = "<group>"; };
 		01CCBE1F1CCA205500B10BBA /* DPNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DPNotification.swift; sourceTree = "<group>"; };
 		01D066991CC63347001863DA /* DPNotificationController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DPNotificationController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01D0669C1CC63347001863DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		01D0669E1CC63347001863DA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		01D0669E1CC63347001863DA /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		01D066A11CC63347001863DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		01D066A31CC63347001863DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		01D066A61CC63347001863DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +49,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01101C871CCE424D0095076F /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				01101C881CCE42680095076F /* DetailViewController.swift */,
+				01D0669E1CC63347001863DA /* MainViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		01CCBE1E1CCA203C00B10BBA /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -84,7 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				01D066B11CC6355C001863DA /* DPNotificationController */,
-				01D0669E1CC63347001863DA /* ViewController.swift */,
+				01101C871CCE424D0095076F /* ViewControllers */,
 				01D0669C1CC63347001863DA /* AppDelegate.swift */,
 			);
 			path = Sources;
@@ -213,10 +224,11 @@
 				01CCBE201CCA205500B10BBA /* DPNotification.swift in Sources */,
 				01D066C71CC7BF59001863DA /* DPDefaultNotififcationView.swift in Sources */,
 				01D066B31CC63579001863DA /* DPNotificationController.swift in Sources */,
-				01D0669F1CC63347001863DA /* ViewController.swift in Sources */,
+				01D0669F1CC63347001863DA /* MainViewController.swift in Sources */,
 				01D066C11CC65A90001863DA /* DPNotificationManager.swift in Sources */,
 				01D066C31CC65EA2001863DA /* DPNotificationViewOperation.swift in Sources */,
 				01D0669D1CC63347001863DA /* AppDelegate.swift in Sources */,
+				01101C891CCE42680095076F /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

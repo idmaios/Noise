@@ -15,6 +15,21 @@ public class DPNotificationManager {
     
     func addPresentationOperation(operation: DPNotificationViewOperation) {
         operationQueue.addOperation(operation)
+        
+        let ops = operationQueue.operations.filter { $0 is DPNotificationViewOperation } as! [DPNotificationViewOperation]
+        let deadOps = ops.filter { $0.notificationController.showingInFixedViewController && $0.notificationController.fixedViewController == nil }
+        
+        for op in deadOps {
+            op.cancel()
+        }
+        
+        let executingOps = ops.filter { $0.executing }
+        guard !executingOps.isEmpty else { return }
+        
+        let currentOperation = ops[0]
+        guard currentOperation.notificationController.viewController != DPNotificationViewController.findTopViewController() else { return }
+        
+        currentOperation.notificationController.closeNotification(animated: false)
     }
     
     public func cancelAll() {
