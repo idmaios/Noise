@@ -10,23 +10,6 @@ import Foundation
 import UIKit
 
 public class DPNotificationViewController {
-
-    private var view: UIView!
-    
-    private var pred: dispatch_once_t = 0
-    private let DPNotificationViewDefaultAnimationTime = 0.3
-    
-    private let swipeGesture = UISwipeGestureRecognizer()
-    private weak var notificationOperation: DPNotificationViewOperation?
-    private var viewCreationClosure: ((CGSize) -> UIView)
-    
-    var showingInFixedViewController = false
-    weak var fixedViewController: UIViewController?
-    
-    lazy var viewController: UIViewController? = {
-        return DPNotificationViewController.findTopViewController()
-    }()
-    
     
     class func findTopViewController() -> UIViewController? {
         guard let delegate = UIApplication.sharedApplication().delegate else { return nil }
@@ -40,6 +23,22 @@ public class DPNotificationViewController {
         
         return topViewController
     }
+
+    
+    var showingInFixedViewController = false
+    weak var fixedViewController: UIViewController?
+    
+    lazy var viewController: UIViewController? = {
+        return DPNotificationViewController.findTopViewController()
+    }()
+    
+    private let DPNotificationViewDefaultAnimationTime = 0.3
+    private let swipeGesture = UISwipeGestureRecognizer()
+    
+    private var view: UIView!
+    private var pred: dispatch_once_t = 0
+    private var viewCreationClosure: ((CGSize) -> UIView)
+    private weak var notificationOperation: DPNotificationViewOperation?
     
     
     public init(viewCreationClosure closure: (CGSize) -> UIView) {

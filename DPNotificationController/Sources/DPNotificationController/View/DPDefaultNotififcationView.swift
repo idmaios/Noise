@@ -90,6 +90,8 @@ class DPDefaultNotififcationView: DPXibLoadView, DPNotficationViewCompatible {
             titleLabel.frame = newTitleFrame
         }
         messageLabel.frame = newMessageFrame
+        
+        updateFrames()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -98,8 +100,11 @@ class DPDefaultNotififcationView: DPXibLoadView, DPNotficationViewCompatible {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        guard let _ = self.superview else { return }
         
+        updateFrames()
+    }
+    
+    private func updateFrames() {
         view.frame = bounds
         
         let labelMaxSize       = CGSize(width: messageLabel.frame.width, height: CGFloat.max)
