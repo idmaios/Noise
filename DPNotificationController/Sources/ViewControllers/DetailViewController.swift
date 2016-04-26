@@ -22,4 +22,8 @@ class DetailViewController: UIViewController {
     @IBAction func presentInNavigationController(sender: UIButton) {
         DPNotification.showNotificationWith(message: "tmp: " + "jasjash djaksldjkajslkdj kjalksj", title: "Some title", icon: UIImage(named: "Check"))
     }
+    
+    @IBAction func dismissSelf(sender: UIBarButtonItem) {
+        navigationController?.dismissViewControllerAnimated(true, completion: nil)
+    }
 }
