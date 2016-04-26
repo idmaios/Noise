@@ -23,13 +23,25 @@ public class DPNotificationViewController {
         
         return topViewController
     }
+    
+    class func findTopViewControllerInNavigationController() -> UIViewController? {
+        guard let topController = DPNotificationViewController.findTopViewController() else { return nil }
+        guard let navigationController = topController as? UINavigationController else { return topController }
+        
+        return navigationController.viewControllers.last ?? nil
+    }
 
     
     var showingInFixedViewController = false
     weak var fixedViewController: UIViewController?
     
-    lazy var viewController: UIViewController? = {
+    lazy var topViewController: UIViewController? = {
         return DPNotificationViewController.findTopViewController()
+    }()
+    
+    lazy var topViewControllerInNavigationController: UIViewController? = {
+        guard let navigationController = self.topViewController as? UINavigationController else { return self.topViewController }
+        return navigationController.viewControllers.last ?? nil
     }()
     
     private let DPNotificationViewDefaultAnimationTime = 0.3
@@ -66,10 +78,10 @@ public class DPNotificationViewController {
     
     func showNotification() {
         guard !showingInFixedViewController || fixedViewController != nil else { finishNotification(); return }
-        guard let controller = fixedViewController ?? viewController else { finishNotification(); return }
-        guard controller == viewController else { finishNotification(); return }
+        guard let controller = fixedViewController ?? topViewController else { finishNotification(); return }
+        guard controller == topViewController || controller == topViewControllerInNavigationController else { finishNotification(); return }
         
-        viewController = controller
+        topViewController = controller
         
         view = viewCreationClosure(controller.view.frame.size)
         
