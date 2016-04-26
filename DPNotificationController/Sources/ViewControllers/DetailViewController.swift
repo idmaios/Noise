@@ -21,12 +21,21 @@ class DetailViewController: UIViewController {
     
     @IBAction func presentInViewControllerWithNavBarHidding(sender: UIButton) {
         navigationController?.setNavigationBarHidden(true, animated: true)
-        showNotification(inViewController: self)
-        navigationController?.setNavigationBarHidden(false, animated: true)
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(0.3 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) { [weak self] in
+            self?.showNotification(inViewController: self)
+            
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(0.3 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) { [weak self] in
+                self?.navigationController?.setNavigationBarHidden(false, animated: true)
+            }
+        }
     }
     
     @IBAction func presentInNavigationController(sender: UIButton) {
         showNotification(inViewController: navigationController)
+    }
+    
+    @IBAction func presentSharedNotification(sender: UIButton) {
+        showNotification(inViewController: nil)
     }
     
     func showNotification(inViewController controller: UIViewController?) {

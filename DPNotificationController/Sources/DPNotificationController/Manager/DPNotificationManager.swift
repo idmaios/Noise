@@ -28,7 +28,7 @@ public class DPNotificationManager {
         
         let currentOperation = ops[0]
         let currentController = currentOperation.notificationController.topViewController
-        guard currentController != DPNotificationViewController.findTopViewController() ||
+        guard currentController != DPNotificationViewController.findTopViewController() &&
               currentController != DPNotificationViewController.findTopViewControllerInNavigationController() else { return }
         
         currentOperation.notificationController.closeNotification(animated: false)

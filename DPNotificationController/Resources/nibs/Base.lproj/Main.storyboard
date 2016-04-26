@@ -103,15 +103,26 @@
                                     <action selector="presentInViewControllerWithNavBarHidding:" destination="Sxo-Z7-CnQ" eventType="touchUpInside" id="T9D-SJ-y7F"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DEb-78-Ae2">
+                                <rect key="frame" x="192" y="361" width="217" height="30"/>
+                                <state key="normal" title="Present Shared Notification">
+                                    <color key="titleColor" red="0.12549019610000001" green="0.14117647059999999" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="presentSharedNotification:" destination="Sxo-Z7-CnQ" eventType="touchUpInside" id="gmv-i7-OtR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.50588235290000005" green="0.63137254899999995" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="DEb-78-Ae2" firstAttribute="centerX" secondItem="0kp-Nr-edl" secondAttribute="centerX" id="9tl-Mz-vKy"/>
                             <constraint firstItem="Nf9-yg-6zv" firstAttribute="centerX" secondItem="0kp-Nr-edl" secondAttribute="centerX" id="G3C-jX-oPa"/>
                             <constraint firstItem="1Vx-JW-JyJ" firstAttribute="top" secondItem="mt5-fK-SPG" secondAttribute="bottom" constant="8" id="Qmj-2p-fyP"/>
                             <constraint firstItem="mt5-fK-SPG" firstAttribute="centerY" secondItem="0kp-Nr-edl" secondAttribute="centerY" id="W9s-RO-kYV"/>
                             <constraint firstItem="mt5-fK-SPG" firstAttribute="top" secondItem="Nf9-yg-6zv" secondAttribute="bottom" constant="8" id="d54-uZ-sTh"/>
                             <constraint firstItem="mt5-fK-SPG" firstAttribute="centerX" secondItem="0kp-Nr-edl" secondAttribute="centerX" id="sNK-cP-pnR"/>
                             <constraint firstItem="1Vx-JW-JyJ" firstAttribute="centerX" secondItem="0kp-Nr-edl" secondAttribute="centerX" id="spZ-zD-NUG"/>
+                            <constraint firstItem="DEb-78-Ae2" firstAttribute="top" secondItem="1Vx-JW-JyJ" secondAttribute="bottom" constant="8" id="vO1-Jh-89Z"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Navigation Controller" id="kgs-hP-cv7">
