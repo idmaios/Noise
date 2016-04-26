@@ -49,11 +49,11 @@ public class DPNotificationViewController {
     
     private var view: UIView!
     private var pred: dispatch_once_t = 0
-    private var viewCreationClosure: ((CGSize) -> UIView)
+    private var viewCreationClosure: ((maxSize: CGSize, topOffset: CGFloat) -> UIView)
     private weak var notificationOperation: DPNotificationViewOperation?
     
     
-    public init(viewCreationClosure closure: (CGSize) -> UIView) {
+    public init(viewCreationClosure closure: (CGSize, CGFloat) -> UIView) {
         swipeGesture.direction = .Up
         viewCreationClosure    = closure
         swipeGesture.addTarget(self, action: #selector(closeNotification))
@@ -80,10 +80,14 @@ public class DPNotificationViewController {
         guard !showingInFixedViewController || fixedViewController != nil else { finishNotification(); return }
         guard let controller = fixedViewController ?? topViewController else { finishNotification(); return }
         guard controller == topViewController || controller == topViewControllerInNavigationController else { finishNotification(); return }
-        
         topViewController = controller
         
-        view = viewCreationClosure(controller.view.frame.size)
+        var topOffset = UIApplication.sharedApplication().statusBarFrame.height
+        if let viewController = topViewController?.navigationController where !viewController.navigationBarHidden {
+            topOffset = 0
+        }
+        
+        view = viewCreationClosure(maxSize: controller.view.frame.size, topOffset: topOffset)
         
         view.autoresizingMask = [.FlexibleWidth]
         controller.view.addSubview(view)
@@ -105,9 +109,15 @@ public class DPNotificationViewController {
             view.frame = newFrame
         }
         
+        var y: CGFloat = 0
+        
+        if let viewController = topViewController?.navigationController where !viewController.navigationBarHidden && viewController.navigationBar.translucent {
+            y = CGRectGetMaxY(viewController.navigationBar.frame)
+        }
+        
         UIView.animateWithDuration(DPNotificationViewDefaultAnimationTime, delay: 0, options: .TransitionNone, animations: { [unowned self] in
             var newFrame = self.view.frame
-            newFrame.origin.y = presentation ? 0 : -newFrame.size.height
+            newFrame.origin.y = presentation ? y : -newFrame.size.height
             self.view.frame = newFrame
             
         }, completion: completion)

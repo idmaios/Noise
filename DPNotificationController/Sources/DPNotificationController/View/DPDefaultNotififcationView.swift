@@ -64,12 +64,13 @@ class DPDefaultNotififcationView: DPXibLoadView, DPNotficationViewCompatible {
     @IBOutlet var iconView: UIImageView!
     @IBOutlet var messageLabel: UILabel!
     @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var contentView: UIView!
     
     let DPDefaultNotififcationViewMaxHeight: CGFloat = 66
     let DPDefaultNotififcationViewMinHeight: CGFloat = 44
     
     
-    required init(maxSize: CGSize, message: String, title: String? = nil, icon: UIImage? = nil, buttonAction: (() -> ())? = nil) {
+    required init(maxSize: CGSize, topOffset: CGFloat, message: String, title: String? = nil, icon: UIImage? = nil, buttonAction: (() -> ())? = nil) {
         super.init(frame: CGRect(origin: CGPointZero, size: maxSize))
         
         iconView.image    = icon
@@ -78,18 +79,23 @@ class DPDefaultNotififcationView: DPXibLoadView, DPNotficationViewCompatible {
         
         var newMessageFrame = messageLabel.frame
         if title == nil {
-            newMessageFrame.origin.y = messageLabel.frame.origin.y - titleLabel.frame.height
+            newMessageFrame.origin.y    = messageLabel.frame.origin.y - titleLabel.frame.height
             newMessageFrame.size.height = messageLabel.frame.height + titleLabel.frame.height
         }
         if icon == nil {
-            var newTitleFrame = titleLabel.frame
-            newTitleFrame.origin.x = view.layoutMargins.left
-            newTitleFrame.size.width = maxSize.width - view.layoutMargins.left - view.layoutMargins.right
-            newMessageFrame.origin.x = newTitleFrame.origin.x
+            var newTitleFrame          = titleLabel.frame
+            newTitleFrame.origin.x     = view.layoutMargins.left
+            newTitleFrame.size.width   = maxSize.width - view.layoutMargins.left - view.layoutMargins.right
+            newMessageFrame.origin.x   = newTitleFrame.origin.x
             newMessageFrame.size.width = newTitleFrame.size.width
-            titleLabel.frame = newTitleFrame
+            titleLabel.frame           = newTitleFrame
         }
         messageLabel.frame = newMessageFrame
+        
+        var newContentViewFrame         = contentView.frame
+        newContentViewFrame.origin.y    = topOffset
+        newContentViewFrame.size.height -= topOffset
+        contentView.frame               = newContentViewFrame
         
         updateFrames()
     }
@@ -124,7 +130,7 @@ class DPDefaultNotififcationView: DPXibLoadView, DPNotficationViewCompatible {
         }
         
         var newFrame = frame
-        newFrame.size.height = min(max(DPDefaultNotififcationViewMinHeight, totalHeight), DPDefaultNotififcationViewMaxHeight)
+        newFrame.size.height = min(max(DPDefaultNotififcationViewMinHeight, totalHeight), DPDefaultNotififcationViewMaxHeight) + contentView.frame.origin.y
         frame = newFrame
         
         view.frame = bounds
