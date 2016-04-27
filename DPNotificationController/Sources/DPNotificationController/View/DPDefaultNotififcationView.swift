@@ -70,7 +70,7 @@ class DPDefaultNotififcationView: DPXibLoadView, DPNotficationViewCompatible {
     let DPDefaultNotififcationViewMinHeight: CGFloat = 44
     
     
-    required init(maxSize: CGSize, topOffset: CGFloat, message: String, title: String? = nil, icon: UIImage? = nil, buttonAction: (() -> ())? = nil) {
+    required init(maxSize: CGSize, topOffset: CGFloat, message: String, title: String? = nil, icon: UIImage? = nil, action: (() -> ())? = nil) {
         super.init(frame: CGRect(origin: CGPointZero, size: maxSize))
         
         iconView.image    = icon

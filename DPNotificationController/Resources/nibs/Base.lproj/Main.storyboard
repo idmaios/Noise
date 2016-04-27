@@ -103,8 +103,8 @@
                                     <action selector="presentInViewControllerWithNavBarHidding:" destination="Sxo-Z7-CnQ" eventType="touchUpInside" id="T9D-SJ-y7F"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DEb-78-Ae2">
-                                <rect key="frame" x="192" y="361" width="217" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DEb-78-Ae2">
+                                <rect key="frame" x="206" y="361" width="189" height="30"/>
                                 <state key="normal" title="Present Shared Notification">
                                     <color key="titleColor" red="0.12549019610000001" green="0.14117647059999999" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>

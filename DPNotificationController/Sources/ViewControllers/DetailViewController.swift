@@ -39,6 +39,6 @@ class DetailViewController: UIViewController {
     }
     
     func showNotification(inViewController controller: UIViewController?) {
-        DPNotification.showNotificationWith(message: "tmp: " + "jasjash djaksldjkajslkdj kjalksj", title: "Some title", icon: UIImage(named: "Check"), inViewController: controller)
+        DPNotification.showNotificationWith(title: "Some title", message: "tmp: " + "jasjash djaksldjkajslkdj kjalksj", icon: UIImage(named: "Check"), viewController: controller)
     }
 }

@@ -11,6 +11,9 @@ import UIKit
 
 public class DPNotificationViewController {
     
+    static public let DPNotificationViewDefaultDuration = 2.0
+    static let DPNotificationViewDefaultAnimationTime = 0.3
+    
     class func findTopViewController() -> UIViewController? {
         guard let delegate = UIApplication.sharedApplication().delegate else { return nil }
         guard let aWindow = delegate.window else { return nil }
@@ -44,9 +47,9 @@ public class DPNotificationViewController {
         return navigationController.viewControllers.last ?? nil
     }()
     
-    private let DPNotificationViewDefaultAnimationTime = 0.3
     private let swipeGesture = UISwipeGestureRecognizer()
     
+    private var showDuration = DPNotificationViewDefaultDuration
     private var view: UIView!
     private var pred: dispatch_once_t = 0
     private var viewCreationClosure: ((maxSize: CGSize, topOffset: CGFloat) -> UIView)
@@ -93,8 +96,8 @@ public class DPNotificationViewController {
         controller.view.addSubview(view)
         view.addGestureRecognizer(swipeGesture)
         
-        animatePresentation(presentation: true) { finished in
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(5 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) { [weak self] in
+        animatePresentation(presentation: true) { [unowned self] finished in
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(self.showDuration * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) { [weak self] in
                 guard let unwrappedSelf = self else { return }
                 unwrappedSelf.closeNotification()
             }
@@ -115,7 +118,7 @@ public class DPNotificationViewController {
             y = CGRectGetMaxY(viewController.navigationBar.frame)
         }
         
-        UIView.animateWithDuration(DPNotificationViewDefaultAnimationTime, delay: 0, options: .TransitionNone, animations: { [unowned self] in
+        UIView.animateWithDuration(DPNotificationViewController.DPNotificationViewDefaultAnimationTime, delay: 0, options: .TransitionNone, animations: { [unowned self] in
             var newFrame = self.view.frame
             newFrame.origin.y = presentation ? y : -newFrame.size.height
             self.view.frame = newFrame
@@ -123,10 +126,11 @@ public class DPNotificationViewController {
         }, completion: completion)
     }
     
-    public func show(inFixedViewController controller: UIViewController? = nil) {
-        
+    public func show(inFixedViewController controller: UIViewController? = nil, duration: Double = DPNotificationViewDefaultDuration) {
+
         fixedViewController = controller
         showingInFixedViewController = controller != nil
+        showDuration = duration
         
         let operation = DPNotificationViewOperation(notificationController: self)
         notificationOperation = operation
