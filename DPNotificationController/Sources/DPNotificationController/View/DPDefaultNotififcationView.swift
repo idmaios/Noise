@@ -68,14 +68,15 @@ class DPDefaultNotififcationView: DPXibLoadView, DPNotficationViewCompatible {
     
     let DPDefaultNotififcationViewMaxHeight: CGFloat = 66
     let DPDefaultNotififcationViewMinHeight: CGFloat = 44
+    var action = {}
     
-    
-    required init(maxSize: CGSize, topOffset: CGFloat, message: String, title: String? = nil, icon: UIImage? = nil, action: (() -> ())? = nil) {
+    required init(maxSize: CGSize, topOffset: CGFloat, message: String, title: String? = nil, icon: UIImage? = nil, callBack: (() -> ()) = {}) {
         super.init(frame: CGRect(origin: CGPointZero, size: maxSize))
         
         iconView.image    = icon
         messageLabel.text = message
         titleLabel.text   = title
+        action            = callBack
         
         var newMessageFrame = messageLabel.frame
         if title == nil {
@@ -98,10 +99,17 @@ class DPDefaultNotififcationView: DPXibLoadView, DPNotficationViewCompatible {
         contentView.frame               = newContentViewFrame
         
         updateFrames()
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapHandle(_:)))
+        addGestureRecognizer(tapGesture)
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    
+    func tapHandle(sender: UITapGestureRecognizer) {
+        action()
     }
     
     override func layoutSubviews() {

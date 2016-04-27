@@ -54,7 +54,11 @@ public class DPNotification: NSObject {
                                         action: (() -> ())? = nil) {
     
         let controller = DPNotificationViewController() { (maxSize, topOffset) in
-            DPDefaultNotififcationView(maxSize: maxSize, topOffset: topOffset, message: message, title: title, icon: icon, action: action)
+            if let action = action {
+                return DPDefaultNotififcationView(maxSize: maxSize, topOffset: topOffset, message: message, title: title, icon: icon, callBack: action)
+            } else {
+                return DPDefaultNotififcationView(maxSize: maxSize, topOffset: topOffset, message: message, title: title, icon: icon)
+            }
         }
         
         controller.show(inFixedViewController: viewController, duration: duration)
