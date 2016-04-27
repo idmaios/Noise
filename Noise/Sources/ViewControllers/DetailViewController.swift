@@ -1,6 +1,6 @@
 //
 //  DetailViewController.swift
-//  DPNotificationController
+//  Noise
 //
 //  Created by Nick on 25/4/16.
 //  Copyright © 2016 spromicky. All rights reserved.
@@ -39,6 +39,6 @@ class DetailViewController: UIViewController {
     }
     
     func showNotification(inViewController controller: UIViewController?) {
-        DPNotification.showNotificationWith(title: "Some title", message: "tmp: " + "jasjash djaksldjkajslkdj kjalksj", icon: UIImage(named: "Check"), viewController: controller)
+        Noise.showNotificationWith(title: "Some title", message: "tmp: " + "jasjash djaksldjkajslkdj kjalksj", icon: UIImage(named: "Check"), viewController: controller)
     }
 }

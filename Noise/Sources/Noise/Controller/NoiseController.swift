@@ -1,6 +1,6 @@
 //
-//  DPNotificationController.swift
-//  DPNotificationController
+//  NosieController.swift
+//  Noise
 //
 //  Created by Nick on 19/4/16.
 //  Copyright © 2016 spromicky. All rights reserved.
@@ -9,10 +9,10 @@
 import Foundation
 import UIKit
 
-public class DPNotificationViewController {
+public class NoiseController {
     
-    static public let DPNotificationViewDefaultDuration = 2.0
-    static let DPNotificationViewDefaultAnimationTime = 0.3
+    static public let NoiseDefaultDuration = 2.0
+    static let NoiseDefaultAnimationTime = 0.3
     
     class func findTopViewController() -> UIViewController? {
         guard let delegate = UIApplication.sharedApplication().delegate else { return nil }
@@ -28,7 +28,7 @@ public class DPNotificationViewController {
     }
     
     class func findTopViewControllerInNavigationController() -> UIViewController? {
-        guard let topController = DPNotificationViewController.findTopViewController() else { return nil }
+        guard let topController = NoiseController.findTopViewController() else { return nil }
         guard let navigationController = topController as? UINavigationController else { return topController }
         
         return navigationController.viewControllers.last ?? nil
@@ -39,7 +39,7 @@ public class DPNotificationViewController {
     weak var fixedViewController: UIViewController?
     
     lazy var topViewController: UIViewController? = {
-        return DPNotificationViewController.findTopViewController()
+        return NoiseController.findTopViewController()
     }()
     
     lazy var topViewControllerInNavigationController: UIViewController? = {
@@ -53,7 +53,7 @@ public class DPNotificationViewController {
     private var view: UIView!
     private var pred: dispatch_once_t = 0
     private var viewCreationClosure: ((maxSize: CGSize, topOffset: CGFloat) -> UIView)
-    private weak var notificationOperation: DPNotificationViewOperation?
+    private weak var notificationOperation: NoiseOperation?
     
     
     public init(viewCreationClosure closure: (CGSize, CGFloat) -> UIView) {
@@ -120,7 +120,7 @@ public class DPNotificationViewController {
             y = CGRectGetMaxY(viewController.navigationBar.frame)
         }
         
-        UIView.animateWithDuration(DPNotificationViewController.DPNotificationViewDefaultAnimationTime, delay: 0, options: .TransitionNone, animations: { [unowned self] in
+        UIView.animateWithDuration(NoiseController.NoiseDefaultAnimationTime, delay: 0, options: .TransitionNone, animations: { [unowned self] in
             var newFrame = self.view.frame
             newFrame.origin.y = presentation ? y : -newFrame.size.height
             self.view.frame = newFrame
@@ -128,14 +128,14 @@ public class DPNotificationViewController {
         }, completion: completion)
     }
     
-    public func show(inFixedViewController controller: UIViewController? = nil, duration: Double? = DPNotificationViewDefaultDuration) {
+    public func show(inFixedViewController controller: UIViewController? = nil, duration: Double? = NoiseDefaultDuration) {
 
         fixedViewController = controller
         showingInFixedViewController = controller != nil
         showDuration = duration
         
-        let operation = DPNotificationViewOperation(notificationController: self)
+        let operation = NoiseOperation(notificationController: self)
         notificationOperation = operation
-        DPNotificationManager.manager.addPresentationOperation(operation)
+        NoiseManager.manager.addPresentationOperation(operation)
     }
 }

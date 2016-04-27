@@ -8,34 +8,36 @@
 
 /* Begin PBXBuildFile section */
 		01101C891CCE42680095076F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01101C881CCE42680095076F /* DetailViewController.swift */; };
-		01CCBE1D1CC8F53100B10BBA /* DPDefaultNotififcationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01CCBE1C1CC8F53100B10BBA /* DPDefaultNotififcationView.xib */; };
-		01CCBE201CCA205500B10BBA /* DPNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CCBE1F1CCA205500B10BBA /* DPNotification.swift */; };
+		01101C8B1CD0CC390095076F /* NoiseDefaultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01101C8A1CD0CC390095076F /* NoiseDefaultView.xib */; };
+		01CCBE1D1CC8F53100B10BBA /* NoiseDefaultBluredView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01CCBE1C1CC8F53100B10BBA /* NoiseDefaultBluredView.xib */; };
+		01CCBE201CCA205500B10BBA /* Noise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CCBE1F1CCA205500B10BBA /* Noise.swift */; };
 		01D0669D1CC63347001863DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D0669C1CC63347001863DA /* AppDelegate.swift */; };
 		01D0669F1CC63347001863DA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D0669E1CC63347001863DA /* MainViewController.swift */; };
 		01D066A21CC63347001863DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01D066A01CC63347001863DA /* Main.storyboard */; };
 		01D066A41CC63347001863DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01D066A31CC63347001863DA /* Assets.xcassets */; };
 		01D066A71CC63347001863DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01D066A51CC63347001863DA /* LaunchScreen.storyboard */; };
-		01D066B31CC63579001863DA /* DPNotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D066B21CC63579001863DA /* DPNotificationController.swift */; };
-		01D066C11CC65A90001863DA /* DPNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D066C01CC65A90001863DA /* DPNotificationManager.swift */; };
-		01D066C31CC65EA2001863DA /* DPNotificationViewOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D066C21CC65EA2001863DA /* DPNotificationViewOperation.swift */; };
-		01D066C71CC7BF59001863DA /* DPDefaultNotififcationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D066C61CC7BF59001863DA /* DPDefaultNotififcationView.swift */; };
+		01D066B31CC63579001863DA /* NoiseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D066B21CC63579001863DA /* NoiseController.swift */; };
+		01D066C11CC65A90001863DA /* NoiseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D066C01CC65A90001863DA /* NoiseManager.swift */; };
+		01D066C31CC65EA2001863DA /* NoiseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D066C21CC65EA2001863DA /* NoiseOperation.swift */; };
+		01D066C71CC7BF59001863DA /* NoiseDefaultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D066C61CC7BF59001863DA /* NoiseDefaultView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		01101C881CCE42680095076F /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		01CCBE1C1CC8F53100B10BBA /* DPDefaultNotififcationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DPDefaultNotififcationView.xib; sourceTree = "<group>"; };
-		01CCBE1F1CCA205500B10BBA /* DPNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DPNotification.swift; sourceTree = "<group>"; };
-		01D066991CC63347001863DA /* DPNotificationController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DPNotificationController.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		01101C8A1CD0CC390095076F /* NoiseDefaultView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoiseDefaultView.xib; sourceTree = "<group>"; };
+		01CCBE1C1CC8F53100B10BBA /* NoiseDefaultBluredView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoiseDefaultBluredView.xib; sourceTree = "<group>"; };
+		01CCBE1F1CCA205500B10BBA /* Noise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Noise.swift; sourceTree = "<group>"; };
+		01D066991CC63347001863DA /* Noise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Noise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01D0669C1CC63347001863DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01D0669E1CC63347001863DA /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		01D066A11CC63347001863DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		01D066A31CC63347001863DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		01D066A61CC63347001863DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		01D066A81CC63347001863DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		01D066B21CC63579001863DA /* DPNotificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DPNotificationController.swift; sourceTree = "<group>"; };
-		01D066C01CC65A90001863DA /* DPNotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DPNotificationManager.swift; sourceTree = "<group>"; };
-		01D066C21CC65EA2001863DA /* DPNotificationViewOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DPNotificationViewOperation.swift; sourceTree = "<group>"; };
-		01D066C61CC7BF59001863DA /* DPDefaultNotififcationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DPDefaultNotififcationView.swift; sourceTree = "<group>"; };
+		01D066B21CC63579001863DA /* NoiseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoiseController.swift; sourceTree = "<group>"; };
+		01D066C01CC65A90001863DA /* NoiseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoiseManager.swift; sourceTree = "<group>"; };
+		01D066C21CC65EA2001863DA /* NoiseOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoiseOperation.swift; sourceTree = "<group>"; };
+		01D066C61CC7BF59001863DA /* NoiseDefaultView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoiseDefaultView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +63,7 @@
 		01CCBE1E1CCA203C00B10BBA /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				01D066B21CC63579001863DA /* DPNotificationController.swift */,
+				01D066B21CC63579001863DA /* NoiseController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -69,7 +71,7 @@
 		01D066901CC63347001863DA = {
 			isa = PBXGroup;
 			children = (
-				01D0669B1CC63347001863DA /* DPNotificationController */,
+				01D0669B1CC63347001863DA /* Noise */,
 				01D0669A1CC63347001863DA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -77,24 +79,24 @@
 		01D0669A1CC63347001863DA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				01D066991CC63347001863DA /* DPNotificationController.app */,
+				01D066991CC63347001863DA /* Noise.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		01D0669B1CC63347001863DA /* DPNotificationController */ = {
+		01D0669B1CC63347001863DA /* Noise */ = {
 			isa = PBXGroup;
 			children = (
 				01D066AE1CC63366001863DA /* Sources */,
 				01D066AF1CC63375001863DA /* Resources */,
 			);
-			path = DPNotificationController;
+			path = Noise;
 			sourceTree = "<group>";
 		};
 		01D066AE1CC63366001863DA /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				01D066B11CC6355C001863DA /* DPNotificationController */,
+				01D066B11CC6355C001863DA /* Noise */,
 				01101C871CCE424D0095076F /* ViewControllers */,
 				01D0669C1CC63347001863DA /* AppDelegate.swift */,
 			);
@@ -120,22 +122,22 @@
 			path = nibs;
 			sourceTree = "<group>";
 		};
-		01D066B11CC6355C001863DA /* DPNotificationController */ = {
+		01D066B11CC6355C001863DA /* Noise */ = {
 			isa = PBXGroup;
 			children = (
 				01CCBE1E1CCA203C00B10BBA /* Controller */,
 				01D066C51CC7BF3D001863DA /* View */,
 				01D066BF1CC65A75001863DA /* Manager */,
-				01CCBE1F1CCA205500B10BBA /* DPNotification.swift */,
+				01CCBE1F1CCA205500B10BBA /* Noise.swift */,
 			);
-			path = DPNotificationController;
+			path = Noise;
 			sourceTree = "<group>";
 		};
 		01D066BF1CC65A75001863DA /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				01D066C01CC65A90001863DA /* DPNotificationManager.swift */,
-				01D066C21CC65EA2001863DA /* DPNotificationViewOperation.swift */,
+				01D066C01CC65A90001863DA /* NoiseManager.swift */,
+				01D066C21CC65EA2001863DA /* NoiseOperation.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -143,8 +145,9 @@
 		01D066C51CC7BF3D001863DA /* View */ = {
 			isa = PBXGroup;
 			children = (
-				01D066C61CC7BF59001863DA /* DPDefaultNotififcationView.swift */,
-				01CCBE1C1CC8F53100B10BBA /* DPDefaultNotififcationView.xib */,
+				01D066C61CC7BF59001863DA /* NoiseDefaultView.swift */,
+				01CCBE1C1CC8F53100B10BBA /* NoiseDefaultBluredView.xib */,
+				01101C8A1CD0CC390095076F /* NoiseDefaultView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -152,9 +155,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		01D066981CC63347001863DA /* DPNotificationController */ = {
+		01D066981CC63347001863DA /* Noise */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 01D066AB1CC63347001863DA /* Build configuration list for PBXNativeTarget "DPNotificationController" */;
+			buildConfigurationList = 01D066AB1CC63347001863DA /* Build configuration list for PBXNativeTarget "Noise" */;
 			buildPhases = (
 				01D066951CC63347001863DA /* Sources */,
 				01D066961CC63347001863DA /* Frameworks */,
@@ -164,9 +167,9 @@
 			);
 			dependencies = (
 			);
-			name = DPNotificationController;
-			productName = DPNotificationController;
-			productReference = 01D066991CC63347001863DA /* DPNotificationController.app */;
+			name = Noise;
+			productName = Noise;
+			productReference = 01D066991CC63347001863DA /* Noise.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -184,7 +187,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 01D066941CC63347001863DA /* Build configuration list for PBXProject "DPNotificationController" */;
+			buildConfigurationList = 01D066941CC63347001863DA /* Build configuration list for PBXProject "Noise" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -197,7 +200,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				01D066981CC63347001863DA /* DPNotificationController */,
+				01D066981CC63347001863DA /* Noise */,
 			);
 		};
 /* End PBXProject section */
@@ -207,9 +210,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01CCBE1D1CC8F53100B10BBA /* DPDefaultNotififcationView.xib in Resources */,
+				01CCBE1D1CC8F53100B10BBA /* NoiseDefaultBluredView.xib in Resources */,
 				01D066A71CC63347001863DA /* LaunchScreen.storyboard in Resources */,
 				01D066A41CC63347001863DA /* Assets.xcassets in Resources */,
+				01101C8B1CD0CC390095076F /* NoiseDefaultView.xib in Resources */,
 				01D066A21CC63347001863DA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -221,12 +225,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01CCBE201CCA205500B10BBA /* DPNotification.swift in Sources */,
-				01D066C71CC7BF59001863DA /* DPDefaultNotififcationView.swift in Sources */,
-				01D066B31CC63579001863DA /* DPNotificationController.swift in Sources */,
+				01CCBE201CCA205500B10BBA /* Noise.swift in Sources */,
+				01D066C71CC7BF59001863DA /* NoiseDefaultView.swift in Sources */,
+				01D066B31CC63579001863DA /* NoiseController.swift in Sources */,
 				01D0669F1CC63347001863DA /* MainViewController.swift in Sources */,
-				01D066C11CC65A90001863DA /* DPNotificationManager.swift in Sources */,
-				01D066C31CC65EA2001863DA /* DPNotificationViewOperation.swift in Sources */,
+				01D066C11CC65A90001863DA /* NoiseManager.swift in Sources */,
+				01D066C31CC65EA2001863DA /* NoiseOperation.swift in Sources */,
 				01D0669D1CC63347001863DA /* AppDelegate.swift in Sources */,
 				01101C891CCE42680095076F /* DetailViewController.swift in Sources */,
 			);
@@ -345,11 +349,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = DPNotificationController/Resources/Info.plist;
+				INFOPLIST_FILE = Noise/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.spromicky.DPNotificationController;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.spromicky.Noise;
+				PRODUCT_NAME = Noise;
 			};
 			name = Debug;
 		};
@@ -357,18 +361,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = DPNotificationController/Resources/Info.plist;
+				INFOPLIST_FILE = Noise/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.spromicky.DPNotificationController;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.spromicky.Noise;
+				PRODUCT_NAME = Noise;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		01D066941CC63347001863DA /* Build configuration list for PBXProject "DPNotificationController" */ = {
+		01D066941CC63347001863DA /* Build configuration list for PBXProject "Noise" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				01D066A91CC63347001863DA /* Debug */,
@@ -377,7 +381,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		01D066AB1CC63347001863DA /* Build configuration list for PBXNativeTarget "DPNotificationController" */ = {
+		01D066AB1CC63347001863DA /* Build configuration list for PBXNativeTarget "Noise" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				01D066AC1CC63347001863DA /* Debug */,

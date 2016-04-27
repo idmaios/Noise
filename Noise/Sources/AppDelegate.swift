@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  DPNotificationController
+//  Noise
 //
 //  Created by Nick on 19/4/16.
 //  Copyright © 2016 spromicky. All rights reserved.

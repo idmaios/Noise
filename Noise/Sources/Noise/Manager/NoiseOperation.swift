@@ -1,6 +1,6 @@
 //
-//  DPNOtificationViewOperation.swift
-//  DPNotificationController
+//  NoiseOperation.swift
+//  Noise
 //
 //  Created by Nick on 19/4/16.
 //  Copyright © 2016 spromicky. All rights reserved.
@@ -8,9 +8,9 @@
 
 import Foundation
 
-class DPNotificationViewOperation: NSOperation {
+class NoiseOperation: NSOperation {
     
-    let notificationController: DPNotificationViewController
+    let notificationController: NoiseController
 
     override var asynchronous: Bool {
         return false
@@ -37,7 +37,7 @@ class DPNotificationViewOperation: NSOperation {
     private var _finished = false
     
     
-    init(notificationController: DPNotificationViewController) {
+    init(notificationController: NoiseController) {
         self.notificationController = notificationController
         
         super.init()

@@ -1,6 +1,6 @@
 //
-//  DPDefaultNotififcationView.swift
-//  DPNotificationController
+//  NoiseDefaultView.swift
+//  Noise
 //
 //  Created by Nick on 20/4/16.
 //  Copyright © 2016 spromicky. All rights reserved.
@@ -9,17 +9,7 @@
 import Foundation
 import UIKit
 
-protocol DPNotficationViewCompatible {
-    associatedtype View: UIView = Self
-    
-//    init(frame: CGRect, message: String, icon: UIImage?, buttonAction: (() -> ())?)
-//    var height: CGFloat { get }
-//    var message: String { set get }
-//    var icon: UIImage { set get }
-//    var action: () -> () { set get }
-}
-
-class DPXibLoadView: UIView {
+class NoiseXibLoadView: UIView {
     
     let xibName: String?
     @IBOutlet weak var view : UIView!
@@ -59,7 +49,7 @@ class DPXibLoadView: UIView {
     }
 }
 
-class DPDefaultNotififcationView: DPXibLoadView, DPNotficationViewCompatible {
+class NoiseDefaultBluredView: NoiseXibLoadView {
     
     @IBOutlet var iconView: UIImageView!
     @IBOutlet var messageLabel: UILabel!
@@ -143,4 +133,7 @@ class DPDefaultNotififcationView: DPXibLoadView, DPNotficationViewCompatible {
         
         view.frame = bounds
     }
+}
+
+class NoiseDefaultView: NoiseDefaultBluredView {
 }
