@@ -49,7 +49,7 @@ public class DPNotificationViewController {
     
     private let swipeGesture = UISwipeGestureRecognizer()
     
-    private var showDuration = DPNotificationViewDefaultDuration
+    private var showDuration: Double?
     private var view: UIView!
     private var pred: dispatch_once_t = 0
     private var viewCreationClosure: ((maxSize: CGSize, topOffset: CGFloat) -> UIView)
@@ -97,7 +97,9 @@ public class DPNotificationViewController {
         view.addGestureRecognizer(swipeGesture)
         
         animatePresentation(presentation: true) { [unowned self] finished in
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(self.showDuration * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) { [weak self] in
+            guard let duration = self.showDuration else { return }
+            
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(duration * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) { [weak self] in
                 guard let unwrappedSelf = self else { return }
                 unwrappedSelf.closeNotification()
             }
@@ -126,7 +128,7 @@ public class DPNotificationViewController {
         }, completion: completion)
     }
     
-    public func show(inFixedViewController controller: UIViewController? = nil, duration: Double = DPNotificationViewDefaultDuration) {
+    public func show(inFixedViewController controller: UIViewController? = nil, duration: Double? = DPNotificationViewDefaultDuration) {
 
         fixedViewController = controller
         showingInFixedViewController = controller != nil

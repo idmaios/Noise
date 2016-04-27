@@ -38,13 +38,21 @@ public class DPNotification: NSObject {
     }
     
     @objc
-    private class func generalShowWith(message message: String,
-                                                 title: String? = nil,
-                                              duration: Double = DPNotificationViewController.DPNotificationViewDefaultDuration,
-                                                  icon: UIImage? = nil,
-                       inViewController viewController: UIViewController? = nil,
-                                                action: (() -> ())? = nil) {
-        
+    public class func showNotificationWith(title title: String?, message: String, icon: UIImage?, viewController: UIViewController?, untilUserClose: Bool, callBack: (() -> ())?) {
+        if untilUserClose {
+            DPNotification.generalShowWith(message: message, title: title, icon: icon, inViewController: viewController, duration: nil, action: callBack)
+        } else {
+            DPNotification.generalShowWith(message: message, title: title, icon: icon, inViewController: viewController, action: callBack)
+        }
+    }
+    
+    class func generalShowWith(message message: String,
+                                         title: String? = nil,
+                                      duration: Double? = DPNotificationViewController.DPNotificationViewDefaultDuration,
+                                          icon: UIImage? = nil,
+               inViewController viewController: UIViewController? = nil,
+                                        action: (() -> ())? = nil) {
+    
         let controller = DPNotificationViewController() { (maxSize, topOffset) in
             DPDefaultNotififcationView(maxSize: maxSize, topOffset: topOffset, message: message, title: title, icon: icon, action: action)
         }
@@ -71,7 +79,16 @@ public extension UIViewController {
     }
     
     @objc
-    public func showNoise(title title: String?, message: String, icon: UIImage, duration: Double, callBack: (() -> ())?) {
+    public func showNoise(title title: String?, message: String, icon: UIImage?, duration: Double, callBack: (() -> ())?) {
         DPNotification.generalShowWith(message: message, title: title, icon: icon, inViewController: self, duration: duration, action: callBack)
+    }
+    
+    @objc
+    public func showNoise(title title: String?, message: String, icon: UIImage?, untilUserClose: Bool, callBack: (() -> ())?) {
+        if untilUserClose {
+            DPNotification.generalShowWith(message: message, title: title, icon: icon, inViewController: self, duration: nil, action: callBack)
+        } else {
+            DPNotification.generalShowWith(message: message, title: title, icon: icon, inViewController: self, action: callBack)
+        }
     }
 }
