@@ -111,6 +111,11 @@ class NoiseDefaultView: NoiseXibLoadView {
     private func updateFrames() {
         view.frame = bounds
         
+        var newContentViewFrame         = contentView.frame
+        newContentViewFrame.size.width  = UIDevice.currentDevice().userInterfaceIdiom == .Pad ? 672 : view.frame.width
+        newContentViewFrame.origin.x    = (view.frame.width - newContentViewFrame.width) / 2
+        contentView.frame               = newContentViewFrame
+        
         let labelMaxSize       = CGSize(width: messageLabel.frame.width, height: CGFloat.max)
         let messageLabelHeight = ceil(messageLabel.sizeThatFits(labelMaxSize).height)
         let totalHeight        = messageLabelHeight + (titleLabel.text == nil ? 0 : titleLabel.frame.size.height)
@@ -132,11 +137,6 @@ class NoiseDefaultView: NoiseXibLoadView {
         frame = newFrame
         
         view.frame = bounds
-        
-        var newContentViewFrame         = contentView.frame
-        newContentViewFrame.size.width  = UIDevice.currentDevice().userInterfaceIdiom == .Pad ? 672 : view.frame.width
-        newContentViewFrame.origin.x    = (view.frame.width - newContentViewFrame.width) / 2
-        contentView.frame               = newContentViewFrame
     }
 }
 

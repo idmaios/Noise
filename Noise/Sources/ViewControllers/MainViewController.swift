@@ -15,11 +15,11 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func errorNotification(sender: UIButton) {
-        showNoise(title: "Error", message: "Something went wrong!", icon: nil, type: .Error)
+        showNoise(title: "Error", message: "Something went wrong!", icon: UIImage(named: "Error"), type: .Error)
     }
     
     @IBAction func warningNotification(sender: UIButton) {
-        showNoise(title: "Warning", message: "Something went bad, but still everything OK!", icon: nil, type: .Warning)
+        showNoise(title: "Warning", message: "Something went bad, but still everything OK!", icon: UIImage(named: "Warning"), type: .Warning)
     }
     
     @IBAction func defaultNotification(sender: UIButton) {
@@ -27,7 +27,7 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func successNotification(sender: UIButton) {
-        showNoise(title: "Success", message: "You do your best! Congratulations!", icon: nil, type: .Success)
+        showNoise(title: "Success", message: "You do your best! Congratulations!", icon: UIImage(named: "Ok"), type: .Success)
     }
     
     @IBAction func customColorNotification(sender: UIButton) {
