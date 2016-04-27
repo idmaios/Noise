@@ -10,8 +10,6 @@ import Foundation
 import UIKit
 
 public class NoiseController {
-    
-    static public let NoiseDefaultDuration = 2.0
     static let NoiseDefaultAnimationTime = 0.3
     
     class func findTopViewController() -> UIViewController? {
@@ -128,7 +126,7 @@ public class NoiseController {
         }, completion: completion)
     }
     
-    public func show(inFixedViewController controller: UIViewController? = nil, duration: Double? = NoiseDefaultDuration) {
+    public func show(inFixedViewController controller: UIViewController? = nil, duration: Double? = Noise.DefaultNotificationDuration) {
 
         fixedViewController = controller
         showingInFixedViewController = controller != nil

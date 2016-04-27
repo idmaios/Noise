@@ -49,7 +49,7 @@ class NoiseXibLoadView: UIView {
     }
 }
 
-class NoiseDefaultBluredView: NoiseXibLoadView {
+class NoiseDefaultView: NoiseXibLoadView {
     
     @IBOutlet var iconView: UIImageView!
     @IBOutlet var messageLabel: UILabel!
@@ -135,5 +135,5 @@ class NoiseDefaultBluredView: NoiseXibLoadView {
     }
 }
 
-class NoiseDefaultView: NoiseDefaultBluredView {
+class NoiseDefaultBluredView: NoiseDefaultView {
 }

@@ -27,7 +27,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LWZ-A3-SHq">
-                                <rect key="frame" x="229.5" y="323" width="141" height="30"/>
+                                <rect key="frame" x="229" y="323" width="141" height="30"/>
                                 <state key="normal" title="NavigationController">
                                     <color key="titleColor" red="0.50588235290000005" green="0.63137254899999995" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -35,18 +35,74 @@
                                     <segue destination="gR3-mZ-bNc" kind="presentation" id="uHd-6L-ds9"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n9c-mP-4Xa">
+                                <rect key="frame" x="229" y="200" width="58" height="30"/>
+                                <state key="normal" title="Success">
+                                    <color key="titleColor" red="0.50588235290000005" green="0.63137254899999995" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="successNotification:" destination="BYZ-38-t0r" eventType="touchUpInside" id="S7T-n6-ifJ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aDp-si-iBD">
+                                <rect key="frame" x="229" y="247" width="50" height="30"/>
+                                <state key="normal" title="Default">
+                                    <color key="titleColor" red="0.50588235290000005" green="0.63137254899999995" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="defaultNotification:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Sfh-4w-mot"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="65b-0i-G9r">
+                                <rect key="frame" x="336" y="247" width="34" height="30"/>
+                                <state key="normal" title="Error">
+                                    <color key="titleColor" red="0.50588235290000005" green="0.63137254899999995" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="errorNotification:" destination="BYZ-38-t0r" eventType="touchUpInside" id="stm-5S-r7Y"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ep4-hw-nwy">
+                                <rect key="frame" x="230.5" y="162" width="139" height="30"/>
+                                <state key="normal" title="Custom background">
+                                    <color key="titleColor" red="0.50588235290000005" green="0.63137254899999995" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="customColorNotification:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Z4J-ge-bbP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fkf-hy-uRf">
+                                <rect key="frame" x="313" y="200" width="57" height="30"/>
+                                <state key="normal" title="Warning">
+                                    <color key="titleColor" red="0.50588235290000005" green="0.63137254899999995" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="warningNotification:" destination="BYZ-38-t0r" eventType="touchUpInside" id="62d-YO-Aga"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.12549019610000001" green="0.14117647059999999" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="aDp-si-iBD" firstAttribute="top" secondItem="n9c-mP-4Xa" secondAttribute="bottom" constant="17" id="0JL-kD-8du"/>
+                            <constraint firstItem="uch-jI-aaF" firstAttribute="top" secondItem="65b-0i-G9r" secondAttribute="bottom" constant="8" id="1XT-Pj-kz6"/>
+                            <constraint firstItem="uch-jI-aaF" firstAttribute="top" secondItem="aDp-si-iBD" secondAttribute="bottom" constant="8" id="2Ri-I1-nIl"/>
+                            <constraint firstItem="Fkf-hy-uRf" firstAttribute="trailing" secondItem="65b-0i-G9r" secondAttribute="trailing" id="3Px-G6-F6M"/>
+                            <constraint firstItem="aDp-si-iBD" firstAttribute="leading" secondItem="LWZ-A3-SHq" secondAttribute="leading" id="6FN-if-x7d"/>
+                            <constraint firstItem="65b-0i-G9r" firstAttribute="top" secondItem="Fkf-hy-uRf" secondAttribute="bottom" constant="17" id="6p6-Nj-IIV"/>
+                            <constraint firstItem="ep4-hw-nwy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="70K-el-KXE"/>
                             <constraint firstItem="LWZ-A3-SHq" firstAttribute="top" secondItem="uch-jI-aaF" secondAttribute="bottom" constant="8" id="7js-bb-Bqv"/>
+                            <constraint firstItem="Fkf-hy-uRf" firstAttribute="top" secondItem="ep4-hw-nwy" secondAttribute="bottom" constant="8" id="BPk-QQ-Ngf"/>
+                            <constraint firstItem="65b-0i-G9r" firstAttribute="trailing" secondItem="LWZ-A3-SHq" secondAttribute="trailing" id="FTZ-k7-rRd"/>
                             <constraint firstItem="uch-jI-aaF" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Oyh-0r-g6t"/>
                             <constraint firstItem="LWZ-A3-SHq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UTN-CL-0qB"/>
                             <constraint firstItem="uch-jI-aaF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jjw-I0-14e"/>
+                            <constraint firstItem="n9c-mP-4Xa" firstAttribute="leading" secondItem="aDp-si-iBD" secondAttribute="leading" id="kMq-zd-HD8"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="661" y="450"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0bv-1x-S0c">
