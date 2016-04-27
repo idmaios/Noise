@@ -21,7 +21,7 @@
             <subviews>
                 <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" id="Bqj-JO-7eL">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" heightSizable="YES"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="pXu-FA-Rb1">
                             <rect key="frame" x="10" y="0.0" width="44" height="44"/>

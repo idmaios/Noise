@@ -39,6 +39,6 @@ class DetailViewController: UIViewController {
     }
     
     func showNotification(inViewController controller: UIViewController?) {
-        Noise.showNotificationWith(title: "Some title", message: "tmp: " + "jasjash djaksldjkajslkdj kjalksj", icon: UIImage(named: "Check"), viewController: controller, duration: Noise.DefaultNotificationDuration, type: .Default, blured: true, callBack: nil)
+        Noise.showNotificationWith(title: "Some title", message: "tmp: " + "jasjash djaksldjkajslkdj kjalksj", icon: UIImage(named: "Check"), viewController: controller, duration: Noise.DefaultNotificationDuration, blured: true, callBack: nil)
     }
 }
