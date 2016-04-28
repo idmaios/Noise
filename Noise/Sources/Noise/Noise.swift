@@ -98,10 +98,10 @@ public class Noise: NSObject {
             } else {
                 if !blured {
                     switch type {
-                    case .Error:   view.backgroundColor = UIColor(red: 204 / 255, green: 102 / 255, blue: 103 / 255, alpha: 1)
-                    case .Warning: view.backgroundColor = UIColor(red: 239 / 255, green: 197 / 255, blue: 116 / 255, alpha: 1)
+                    case .Error:   view.backgroundColor = UIColor(red:0.98, green:0.27, blue:0.35, alpha:1.00)
+                    case .Warning: view.backgroundColor = UIColor(red:1.00, green:0.47, blue:0.31, alpha:1.00)
                     case .Default: view.backgroundColor = UIColor(white: 0.2, alpha: 0.5)
-                    case .Success: view.backgroundColor = UIColor(red: 144 / 255, green: 209 / 255, blue: 119 / 255, alpha: 1)
+                    case .Success: view.backgroundColor = UIColor(red:0.56, green:0.78, blue:0.25, alpha:1.00)
                     }
                 }
             }

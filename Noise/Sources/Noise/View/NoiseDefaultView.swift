@@ -56,8 +56,8 @@ class NoiseDefaultView: NoiseXibLoadView {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var contentView: UIView!
     
-    let DPDefaultNotififcationViewMaxHeight: CGFloat = 66
-    let DPDefaultNotififcationViewMinHeight: CGFloat = 44
+    private let DPDefaultNotififcationViewMaxHeight: CGFloat = 66
+    private var DPDefaultNotififcationViewMinHeight: CGFloat = 44
     var action = {}
     
     required init(maxSize: CGSize, topOffset: CGFloat, message: String, title: String? = nil, icon: UIImage? = nil, callBack: (() -> ()) = {}) {
@@ -67,6 +67,8 @@ class NoiseDefaultView: NoiseXibLoadView {
         messageLabel.text = message
         titleLabel.text   = title
         action            = callBack
+        
+        DPDefaultNotififcationViewMinHeight = topOffset == 0 ? 50 : 44
         
         var newMessageFrame = messageLabel.frame
         if title == nil {
