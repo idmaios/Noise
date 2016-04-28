@@ -11,13 +11,16 @@ import Foundation
 public class NoiseManager {
     public static let manager = NoiseManager()
     
-    private let operationQueue = NSOperationQueue.mainQueue()
+    let operationQueue = NSOperationQueue.mainQueue()
+    
+    public var isEmpty: Bool {
+        return operationQueue.operations.filter { $0 is NoiseOperation }.isEmpty
+    }
     
     func addPresentationOperation(operation: NoiseOperation) {
         operationQueue.addOperation(operation)
         
-        let ops = operationQueue.operations.filter { $0 is NoiseOperation
-        } as! [NoiseOperation]
+        let ops = operationQueue.operations.filter { $0 is NoiseOperation } as! [NoiseOperation]
         let deadOps = ops.filter { $0.notificationController.showingInFixedViewController && $0.notificationController.fixedViewController == nil }
         
         for op in deadOps {

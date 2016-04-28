@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "Noise"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "iOS in application notifications. Based on NSOperationQueue."
   s.homepage     = "https://github.com/DepositDev/Noise"
   s.license      = 'MIT'
@@ -11,5 +11,5 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.source_files = 'Noise/Sources/Noise/**/*.swift'
-  s.resources    = 'Noise/Sources/Noise/View/*.nib'
+  s.resources    = 'Noise/Sources/Noise/View/*.xib'
 end
