@@ -114,7 +114,7 @@ class NoiseDefaultView: NoiseXibLoadView {
         view.frame = bounds
         
         var newContentViewFrame         = contentView.frame
-        newContentViewFrame.size.width  = UIDevice.currentDevice().userInterfaceIdiom == .Pad ? 672 : view.frame.width
+        newContentViewFrame.size.width  = min(672, view.frame.width)
         newContentViewFrame.origin.x    = (view.frame.width - newContentViewFrame.width) / 2
         contentView.frame               = newContentViewFrame
         

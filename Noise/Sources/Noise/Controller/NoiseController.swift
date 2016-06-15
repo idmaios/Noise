@@ -83,7 +83,7 @@ public class NoiseController {
         guard controller == topViewController || controller == topViewControllerInNavigationController else { finishNotification(); return }
         topViewController = controller
         
-        var topOffset = UIApplication.sharedApplication().statusBarFrame.height
+        var topOffset = topViewController?.topLayoutGuide.length ?? 0
         if let viewController = topViewController?.navigationController where !viewController.navigationBarHidden {
             topOffset = 0
         }
