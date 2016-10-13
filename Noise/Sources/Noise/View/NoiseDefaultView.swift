@@ -56,7 +56,8 @@ class NoiseDefaultView: NoiseXibLoadView {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var contentView: UIView!
     
-    private let DPDefaultNotififcationViewMaxHeight: CGFloat = 66
+    private let DPDefaultNotififcationViewBottomOffset: CGFloat = 15
+    private let DPDefaultNotififcationViewMaxHeight: CGFloat = 999
     private var DPDefaultNotififcationViewMinHeight: CGFloat = 44
     var action = {}
     
@@ -135,7 +136,7 @@ class NoiseDefaultView: NoiseXibLoadView {
         }
         
         var newFrame = frame
-        newFrame.size.height = min(max(DPDefaultNotififcationViewMinHeight, totalHeight), DPDefaultNotififcationViewMaxHeight) + contentView.frame.origin.y
+        newFrame.size.height = min(max(DPDefaultNotififcationViewMinHeight, totalHeight + DPDefaultNotififcationViewBottomOffset), DPDefaultNotififcationViewMaxHeight) + contentView.frame.origin.y
         frame = newFrame
         
         view.frame = bounds
