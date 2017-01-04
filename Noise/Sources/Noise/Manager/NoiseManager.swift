@@ -8,16 +8,16 @@
 
 import Foundation
 
-public class NoiseManager {
-    public static let manager = NoiseManager()
+open class NoiseManager {
+    open static let manager = NoiseManager()
     
-    let operationQueue = NSOperationQueue.mainQueue()
+    let operationQueue = OperationQueue.main
     
-    public var isEmpty: Bool {
+    open var isEmpty: Bool {
         return operationQueue.operations.filter { $0 is NoiseOperation }.isEmpty
     }
     
-    func addPresentationOperation(operation: NoiseOperation) {
+    func addPresentationOperation(_ operation: NoiseOperation) {
         operationQueue.addOperation(operation)
         
         let ops = operationQueue.operations.filter { $0 is NoiseOperation } as! [NoiseOperation]
@@ -27,7 +27,7 @@ public class NoiseManager {
             op.cancel()
         }
         
-        let executingOps = ops.filter { $0.executing }
+        let executingOps = ops.filter { $0.isExecuting }
         guard !executingOps.isEmpty else { return }
         
         let currentOperation = ops[0]
@@ -38,7 +38,7 @@ public class NoiseManager {
         currentOperation.notificationController.closeNotification(animated: false)
     }
     
-    public func cancelAll() {
+    open func cancelAll() {
         let ops = operationQueue.operations.filter { $0 is NoiseOperation
         }
         for op in ops {

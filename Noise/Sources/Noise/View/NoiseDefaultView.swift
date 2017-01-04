@@ -28,23 +28,23 @@ class NoiseXibLoadView: UIView {
         xibSetup()
     }
     
-    private func xibSetup() {
+    fileprivate func xibSetup() {
         view = loadViewFromXib()
         
         let correctSize = CGSize(width: frame.width, height: view.frame.height)
         frame = CGRect(origin: frame.origin, size: correctSize)
         view.frame = CGRect(origin: view.frame.origin, size: correctSize)
         
-        view.autoresizingMask = [.FlexibleWidth, .FlexibleTopMargin]
-        backgroundColor = .clearColor()
+        view.autoresizingMask = [.flexibleWidth, .flexibleTopMargin]
+        backgroundColor = .clear
         
         addSubview(view)
     }
     
-    private func loadViewFromXib() -> UIView {
-        let bundle = NSBundle(forClass: self.dynamicType)
-        let nib    = UINib(nibName: xibName ?? String(self.dynamicType), bundle: bundle)
-        let view   = nib.instantiateWithOwner(self, options: nil).first as! UIView
+    fileprivate func loadViewFromXib() -> UIView {
+        let bundle = Bundle(for: type(of: self))
+        let nib    = UINib(nibName: xibName ?? String(describing: type(of: self)), bundle: bundle)
+        let view   = nib.instantiate(withOwner: self, options: nil).first as! UIView
         return view
     }
 }
@@ -56,13 +56,13 @@ class NoiseDefaultView: NoiseXibLoadView {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var contentView: UIView!
     
-    private let DPDefaultNotififcationViewBottomOffset: CGFloat = 15
-    private let DPDefaultNotififcationViewMaxHeight: CGFloat = 999
-    private var DPDefaultNotififcationViewMinHeight: CGFloat = 44
+    fileprivate let DPDefaultNotififcationViewBottomOffset: CGFloat = 15
+    fileprivate let DPDefaultNotififcationViewMaxHeight: CGFloat = 999
+    fileprivate var DPDefaultNotififcationViewMinHeight: CGFloat = 44
     var action = {}
     
-    required init(maxSize: CGSize, topOffset: CGFloat, message: String, title: String? = nil, icon: UIImage? = nil, callBack: (() -> ()) = {}) {
-        super.init(frame: CGRect(origin: CGPointZero, size: maxSize))
+    required init(maxSize: CGSize, topOffset: CGFloat, message: String, title: String? = nil, icon: UIImage? = nil, callBack: @escaping (() -> ()) = {}) {
+        super.init(frame: CGRect(origin: CGPoint.zero, size: maxSize))
         
         iconView.image    = icon
         messageLabel.text = message
@@ -101,7 +101,7 @@ class NoiseDefaultView: NoiseXibLoadView {
         super.init(coder: aDecoder)
     }
     
-    func tapHandle(sender: UITapGestureRecognizer) {
+    func tapHandle(_ sender: UITapGestureRecognizer) {
         action()
     }
     
@@ -111,7 +111,7 @@ class NoiseDefaultView: NoiseXibLoadView {
         updateFrames()
     }
     
-    private func updateFrames() {
+    fileprivate func updateFrames() {
         view.frame = bounds
         
         var newContentViewFrame         = contentView.frame
@@ -119,7 +119,7 @@ class NoiseDefaultView: NoiseXibLoadView {
         newContentViewFrame.origin.x    = (view.frame.width - newContentViewFrame.width) / 2
         contentView.frame               = newContentViewFrame
         
-        let labelMaxSize       = CGSize(width: messageLabel.frame.width, height: CGFloat.max)
+        let labelMaxSize       = CGSize(width: messageLabel.frame.width, height: CGFloat.greatestFiniteMagnitude)
         let messageLabelHeight = ceil(messageLabel.sizeThatFits(labelMaxSize).height)
         let totalHeight        = messageLabelHeight + (titleLabel.text == nil ? 0 : titleLabel.frame.size.height)
         
@@ -130,7 +130,7 @@ class NoiseDefaultView: NoiseXibLoadView {
             titleLabel.frame  = newFrame
 
             newFrame             = messageLabel.frame
-            newFrame.origin.y    = titleLabel.text == nil ? diff : CGRectGetMaxY(titleLabel.frame)
+            newFrame.origin.y    = titleLabel.text == nil ? diff : titleLabel.frame.maxY
             newFrame.size.height = messageLabelHeight
             messageLabel.frame   = newFrame
         }

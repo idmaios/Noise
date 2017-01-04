@@ -9,11 +9,23 @@
 import Foundation
 import UIKit
 
-public class NoiseController {
+open class NoiseController {
+    private lazy var __onceAnimated: (Void) = { [unowned self] in
+            self.animatePresentation(presentation: false, animated: true) { [unowned self] finished in
+                self.view.removeFromSuperview()
+                self.finishNotification()
+            }
+        }()
+    private lazy var __onceNotAnimated: (Void) = { [unowned self] in
+        self.animatePresentation(presentation: false, animated: true) { [unowned self] finished in
+            self.view.removeFromSuperview()
+            self.finishNotification()
+        }
+        }()
     static let NoiseDefaultAnimationTime = 0.3
     
     class func findTopViewController() -> UIViewController? {
-        guard let delegate = UIApplication.sharedApplication().delegate else { return nil }
+        guard let delegate = UIApplication.shared.delegate else { return nil }
         guard let aWindow = delegate.window else { return nil }
         guard let bWindow = aWindow else { return nil }
         guard var topViewController = bWindow.rootViewController else { return nil }
@@ -45,17 +57,17 @@ public class NoiseController {
         return navigationController.viewControllers.last ?? nil
     }()
     
-    private let swipeGesture = UISwipeGestureRecognizer()
+    fileprivate let swipeGesture = UISwipeGestureRecognizer()
     
-    private var showDuration: Double?
-    private var view: UIView!
-    private var pred: dispatch_once_t = 0
-    private var viewCreationClosure: ((maxSize: CGSize, topOffset: CGFloat) -> UIView)
-    private weak var notificationOperation: NoiseOperation?
+    fileprivate var showDuration: Double?
+    fileprivate var view: UIView!
+    fileprivate var pred: Int = 0
+    fileprivate var viewCreationClosure: ((_ maxSize: CGSize, _ topOffset: CGFloat) -> UIView)
+    fileprivate weak var notificationOperation: NoiseOperation?
     
     
-    public init(viewCreationClosure closure: (CGSize, CGFloat) -> UIView) {
-        swipeGesture.direction = .Up
+    public init(viewCreationClosure closure: @escaping (CGSize, CGFloat) -> UIView) {
+        swipeGesture.direction = .up
         viewCreationClosure    = closure
         swipeGesture.addTarget(self, action: #selector(closeNotification))
     }
@@ -64,16 +76,16 @@ public class NoiseController {
     @objc func closeNotification(animated isAnimated: Bool = true) {
         guard let _ = view.superview else { return }
         
-        dispatch_once(&pred) { [unowned self] in
-            self.animatePresentation(presentation: false, animated: isAnimated) { [unowned self] finished in
-                self.view.removeFromSuperview()
-                self.finishNotification()
-            }
+        if isAnimated {
+            _ = self.__onceAnimated
+        } else {
+            _ = self.__onceNotAnimated
         }
+            
     }
     
-    private func finishNotification() {
-        guard let operation = self.notificationOperation where operation.cancelled == false else { return }
+    fileprivate func finishNotification() {
+        guard let operation = self.notificationOperation, operation.isCancelled == false else { return }
         operation.completeOperation()
     }
     
@@ -84,27 +96,27 @@ public class NoiseController {
         topViewController = controller
         
         var topOffset = topViewController?.topLayoutGuide.length ?? 0
-        if let viewController = topViewController?.navigationController where !viewController.navigationBarHidden {
+        if let viewController = topViewController?.navigationController, !viewController.isNavigationBarHidden {
             topOffset = 0
         }
         
-        view = viewCreationClosure(maxSize: controller.view.frame.size, topOffset: topOffset)
+        view = viewCreationClosure(controller.view.frame.size, topOffset)
         
-        view.autoresizingMask = [.FlexibleWidth]
+        view.autoresizingMask = [.flexibleWidth]
         controller.view.addSubview(view)
         view.addGestureRecognizer(swipeGesture)
         
         animatePresentation(presentation: true) { [unowned self] finished in
             guard let duration = self.showDuration else { return }
             
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(duration * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) { [weak self] in
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(duration * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)) { [weak self] in
                 guard let unwrappedSelf = self else { return }
                 unwrappedSelf.closeNotification()
             }
         }
     }
     
-    func animatePresentation(presentation presentation: Bool, animated: Bool = true, completion: ((Bool) -> Void)? = nil) {
+    func animatePresentation(presentation: Bool, animated: Bool = true, completion: ((Bool) -> Void)? = nil) {
         
         if presentation {
             var newFrame = view.frame
@@ -114,11 +126,11 @@ public class NoiseController {
         
         var y: CGFloat = 0
         
-        if let viewController = topViewController?.navigationController where !viewController.navigationBarHidden && viewController.navigationBar.translucent {
-            y = CGRectGetMaxY(viewController.navigationBar.frame)
+        if let viewController = topViewController?.navigationController, !viewController.isNavigationBarHidden && viewController.navigationBar.isTranslucent {
+            y = viewController.navigationBar.frame.maxY
         }
         
-        UIView.animateWithDuration(NoiseController.NoiseDefaultAnimationTime, delay: 0, options: .TransitionNone, animations: { [unowned self] in
+        UIView.animate(withDuration: NoiseController.NoiseDefaultAnimationTime, delay: 0, options: UIViewAnimationOptions(), animations: { [unowned self] in
             var newFrame = self.view.frame
             newFrame.origin.y = presentation ? y : -newFrame.size.height
             self.view.frame = newFrame
@@ -126,7 +138,7 @@ public class NoiseController {
         }, completion: completion)
     }
     
-    public func show(inFixedViewController controller: UIViewController? = nil, duration: Double? = Noise.DefaultNotificationDuration) {
+    open func show(inFixedViewController controller: UIViewController? = nil, duration: Double? = Noise.DefaultNotificationDuration) {
 
         fixedViewController = controller
         showingInFixedViewController = controller != nil

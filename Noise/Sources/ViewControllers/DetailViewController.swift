@@ -11,30 +11,30 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
-    @IBAction func dismissSelf(sender: UIBarButtonItem) {
-        navigationController?.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func dismissSelf(_ sender: UIBarButtonItem) {
+        navigationController?.dismiss(animated: true, completion: nil)
     }
 
-    @IBAction func presentInViewController(sender: UIButton) {
+    @IBAction func presentInViewController(_ sender: UIButton) {
         showNotification(inViewController: self)
     }
     
-    @IBAction func presentInViewControllerWithNavBarHidding(sender: UIButton) {
+    @IBAction func presentInViewControllerWithNavBarHidding(_ sender: UIButton) {
         navigationController?.setNavigationBarHidden(true, animated: true)
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(0.3 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(0.3 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)) { [weak self] in
             self?.showNotification(inViewController: self)
             
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(0.3 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) { [weak self] in
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(0.3 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)) { [weak self] in
                 self?.navigationController?.setNavigationBarHidden(false, animated: true)
             }
         }
     }
     
-    @IBAction func presentInNavigationController(sender: UIButton) {
+    @IBAction func presentInNavigationController(_ sender: UIButton) {
         showNotification(inViewController: navigationController)
     }
     
-    @IBAction func presentSharedNotification(sender: UIButton) {
+    @IBAction func presentSharedNotification(_ sender: UIButton) {
         showNotification(inViewController: nil)
     }
     

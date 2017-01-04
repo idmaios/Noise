@@ -8,33 +8,33 @@
 
 import Foundation
 
-class NoiseOperation: NSOperation {
+class NoiseOperation: Operation {
     
     let notificationController: NoiseController
 
-    override var asynchronous: Bool {
+    override var isAsynchronous: Bool {
         return false
     }
     
-    override var executing: Bool {
+    override var isExecuting: Bool {
         get { return _executing }
         set {
-            willChangeValueForKey("isExecuting")
+            willChangeValue(forKey: "isExecuting")
             _executing = newValue
-            didChangeValueForKey("isExecuting")
+            didChangeValue(forKey: "isExecuting")
         }
     }
-    private var _executing = false
+    fileprivate var _executing = false
     
-    override var finished: Bool {
+    override var isFinished: Bool {
         get { return _finished }
         set {
-            willChangeValueForKey("isFinished")
+            willChangeValue(forKey: "isFinished")
             _finished = newValue
-            didChangeValueForKey("isFinished")
+            didChangeValue(forKey: "isFinished")
         }
     }
-    private var _finished = false
+    fileprivate var _finished = false
     
     
     init(notificationController: NoiseController) {
@@ -42,14 +42,14 @@ class NoiseOperation: NSOperation {
         
         super.init()
         
-        qualityOfService = .UserInitiated
+        qualityOfService = .userInitiated
     }
     
     
     override func start() {
-        guard cancelled != true else { finished = true; return }
+        guard isCancelled != true else { isFinished = true; return }
         
-        executing = true
+        isExecuting = true
         main()
     }
     
@@ -58,12 +58,12 @@ class NoiseOperation: NSOperation {
     }
     
     func completeOperation() {
-        executing = false
-        finished  = true
+        isExecuting = false
+        isFinished  = true
     }
     
     override func cancel() {
-        guard executing == false else { return }
+        guard isExecuting == false else { return }
         
         super.cancel()
     }

@@ -184,6 +184,8 @@
 				TargetAttributes = {
 					01D066981CC63347001863DA = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = VV53US7R3M;
+						LastSwiftMigration = 0820;
 					};
 				};
 			};
@@ -349,11 +351,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = VV53US7R3M;
 				INFOPLIST_FILE = Noise/Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.spromicky.Noise;
 				PRODUCT_NAME = Noise;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -361,11 +365,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = VV53US7R3M;
 				INFOPLIST_FILE = Noise/Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.spromicky.Noise;
 				PRODUCT_NAME = Noise;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
