@@ -101,7 +101,7 @@ class NoiseDefaultView: NoiseXibLoadView {
         super.init(coder: aDecoder)
     }
     
-    func tapHandle(_ sender: UITapGestureRecognizer) {
+    @objc func tapHandle(_ sender: UITapGestureRecognizer) {
         action()
     }
     
