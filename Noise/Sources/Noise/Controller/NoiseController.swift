@@ -107,7 +107,7 @@ open class NoiseController {
         view.addGestureRecognizer(swipeGesture)
         
         animatePresentation(presentation: true) { [unowned self] finished in
-            guard let duration = self.showDuration else { return }
+            guard let duration = self.showDuration, duration > 0 else { return }
             
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(duration * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)) { [weak self] in
                 guard let unwrappedSelf = self else { return }
