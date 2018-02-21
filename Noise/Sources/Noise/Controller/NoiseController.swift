@@ -57,22 +57,29 @@ open class NoiseController {
         return navigationController.viewControllers.last ?? nil
     }()
     
-    fileprivate let swipeGesture = UISwipeGestureRecognizer()
+    fileprivate let panGesture = UIPanGestureRecognizer()
     
     fileprivate var showDuration: Double?
     fileprivate var view: UIView!
-    fileprivate var pred: Int = 0
     fileprivate var viewCreationClosure: ((_ maxSize: CGSize, _ topOffset: CGFloat) -> UIView)
     fileprivate weak var notificationOperation: NoiseOperation?
     
     
     public init(viewCreationClosure closure: @escaping (CGSize, CGFloat) -> UIView) {
-        swipeGesture.direction = .up
-        viewCreationClosure    = closure
-        swipeGesture.addTarget(self, action: #selector(closeNotification))
+        viewCreationClosure = closure
+        panGesture.addTarget(self, action: #selector(handlePan(_:)))
     }
     
     //MARK: - Showing
+    @objc func handlePan(_ sender: UIPanGestureRecognizer) {
+        switch sender.state {
+        case .ended, .cancelled:
+            guard sender.velocity(in: nil).y < -10 else { return }
+            closeNotification()
+        default: break
+        }
+    }
+    
     @objc func closeNotification(animated isAnimated: Bool = true) {
         guard let _ = view.superview else { return }
         
@@ -104,7 +111,7 @@ open class NoiseController {
         
         view.autoresizingMask = [.flexibleWidth]
         controller.view.addSubview(view)
-        view.addGestureRecognizer(swipeGesture)
+        view.addGestureRecognizer(panGesture)
         
         animatePresentation(presentation: true) { [unowned self] finished in
             guard let duration = self.showDuration, duration > 0 else { return }
