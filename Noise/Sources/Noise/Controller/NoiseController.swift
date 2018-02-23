@@ -17,7 +17,7 @@ open class NoiseController {
             }
         }()
     private lazy var __onceNotAnimated: (Void) = { [unowned self] in
-        self.animatePresentation(presentation: false, animated: true) { [unowned self] finished in
+        self.animatePresentation(presentation: false, animated: false) { [unowned self] finished in
             self.view.removeFromSuperview()
             self.finishNotification()
         }
@@ -80,7 +80,7 @@ open class NoiseController {
         }
     }
     
-    @objc func closeNotification(animated isAnimated: Bool = true) {
+    func closeNotification(animated isAnimated: Bool = true) {
         guard let _ = view.superview else { return }
         
         if isAnimated {
@@ -88,7 +88,6 @@ open class NoiseController {
         } else {
             _ = self.__onceNotAnimated
         }
-            
     }
     
     fileprivate func finishNotification() {
@@ -117,8 +116,7 @@ open class NoiseController {
             guard let duration = self.showDuration, duration > 0 else { return }
             
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(duration * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)) { [weak self] in
-                guard let unwrappedSelf = self else { return }
-                unwrappedSelf.closeNotification()
+                self?.closeNotification()
             }
         }
     }
@@ -154,5 +152,13 @@ open class NoiseController {
         let operation = NoiseOperation(notificationController: self)
         notificationOperation = operation
         NoiseManager.manager.addPresentationOperation(operation)
+    }
+
+    open func close() {
+        if let _ = view {
+            closeNotification()
+        } else {
+            finishNotification()
+        }
     }
 }

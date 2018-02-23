@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "Noise"
-  s.version      = "0.2.1"
+  s.version      = "0.2.2"
   s.summary      = "iOS in application notifications. Based on NSOperationQueue."
   s.homepage     = "https://github.com/DepositDev/Noise"
   s.license      = 'MIT'
