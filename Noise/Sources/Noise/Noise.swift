@@ -57,12 +57,14 @@ open class Noise: NSObject {
         Noise.generalShowWith(message: message, title: title, duration: duration, icon: icon, inViewController: viewController, type: type, action: callBack)
     }
     
-    open class func showNotificationWith(title: String?, message: String, icon: UIImage?, viewController: UIViewController?, duration: Double?, blured: Bool, callBack: (() -> Bool)?) {
-        Noise.generalShowWith(message: message, title: title, duration: duration, icon: icon, blured: blured, inViewController: viewController, action: callBack)
+    @discardableResult
+    open class func showNotificationWith(title: String?, message: String, icon: UIImage?, viewController: UIViewController?, duration: Double?, blured: Bool, callBack: (() -> Bool)?) -> NoiseController {
+        return Noise.generalShowWith(message: message, title: title, duration: duration, icon: icon, blured: blured, inViewController: viewController, action: callBack)
     }
     
-    open class func showNotificationWith(title: String?, message: String, icon: UIImage?, viewController: UIViewController?, duration: Double?, backgroundColor: UIColor, callBack: (() -> Bool)?) {
-        Noise.generalShowWith(message: message, title: title, duration: duration, icon: icon, backgroundColor: backgroundColor, inViewController: viewController, action: callBack)
+    @discardableResult
+    open class func showNotificationWith(title: String?, message: String, icon: UIImage?, viewController: UIViewController?, duration: Double?, backgroundColor: UIColor, callBack: (() -> Bool)?) -> NoiseController {
+        return Noise.generalShowWith(message: message, title: title, duration: duration, icon: icon, backgroundColor: backgroundColor, inViewController: viewController, action: callBack)
     }
     
     @objc
@@ -74,15 +76,16 @@ open class Noise: NSObject {
         }
     }
     
+    @discardableResult
     class func generalShowWith(message: String,
-                                         title: String? = nil,
-                                      duration: Double? = DefaultNotificationDuration,
-                                          icon: UIImage? = nil,
-                                        blured: Bool = false,
+                               title: String? = nil,
+                               duration: Double? = DefaultNotificationDuration,
+                               icon: UIImage? = nil,
+                               blured: Bool = false,
                                backgroundColor: UIColor? = nil,
-               inViewController viewController: UIViewController? = nil,
-                                          type: NoiseType = .default,
-                                        action: (() -> Bool)? = nil) {
+                               inViewController viewController: UIViewController? = nil,
+                               type: NoiseType = .default,
+                               action: (() -> Bool)? = nil) -> NoiseController {
     
         let controller = NoiseController() { (maxSize, topOffset) in
             var view: NoiseDefaultView!
@@ -108,6 +111,8 @@ open class Noise: NSObject {
         }
         controller.tapClosure = action
         controller.show(inFixedViewController: viewController, duration: duration)
+        
+        return controller
     }
 }
 
@@ -143,12 +148,14 @@ public extension UIViewController {
         Noise.generalShowWith(message: message, title: title, duration: duration, icon: icon, inViewController: self, type: type, action: callBack)
     }
     
-    public func showNoise(title: String?, message: String, icon: UIImage?, duration: Double?, backgroundColor: UIColor?, callBack: (() -> Bool)?) {
-        Noise.generalShowWith(message: message, title: title, duration: duration, icon: icon, backgroundColor: backgroundColor, inViewController: self, action: callBack)
+    @discardableResult
+    public func showNoise(title: String?, message: String, icon: UIImage?, duration: Double?, backgroundColor: UIColor?, callBack: (() -> Bool)?) -> NoiseController {
+        return Noise.generalShowWith(message: message, title: title, duration: duration, icon: icon, backgroundColor: backgroundColor, inViewController: self, action: callBack)
     }
     
-    public func showNoise(title: String?, message: String, icon: UIImage?, duration: Double?, blured: Bool, callBack: (() -> Bool)?) {
-        Noise.generalShowWith(message: message, title: title, duration: duration, icon: icon, blured: blured, inViewController: self, action: callBack)
+    @discardableResult
+    public func showNoise(title: String?, message: String, icon: UIImage?, duration: Double?, blured: Bool, callBack: (() -> Bool)?) -> NoiseController {
+        return Noise.generalShowWith(message: message, title: title, duration: duration, icon: icon, blured: blured, inViewController: self, action: callBack)
     }
     
     @objc
