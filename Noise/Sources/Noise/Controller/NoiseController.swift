@@ -57,20 +57,31 @@ open class NoiseController {
         return navigationController.viewControllers.last ?? nil
     }()
     
-    fileprivate let panGesture = UIPanGestureRecognizer()
-    
+    fileprivate weak var notificationOperation: NoiseOperation?
     fileprivate var showDuration: Double?
     fileprivate var view: UIView!
-    fileprivate var viewCreationClosure: ((_ maxSize: CGSize, _ topOffset: CGFloat) -> UIView)
-    fileprivate weak var notificationOperation: NoiseOperation?
+    
+    fileprivate let viewCreationClosure: ((_ maxSize: CGSize, _ topOffset: CGFloat) -> UIView)
+    
+    /// Closure, that will be executed on tap on `Noise` view.
+    ///
+    /// Return bool value indicates behavior for `Noise` presentation:
+    ///    - `true`: will hide `Noise` immediately;
+    ///    - `false`: will left behavior as is;
+    var tapClosure: (() -> Bool)? = nil
     
     
     public init(viewCreationClosure closure: @escaping (CGSize, CGFloat) -> UIView) {
         viewCreationClosure = closure
-        panGesture.addTarget(self, action: #selector(handlePan(_:)))
     }
     
     //MARK: - Showing
+    @objc func handleTap(_ sender: UITapGestureRecognizer) {
+        if tapClosure?() == true {
+            closeNotification()
+        }
+    }
+    
     @objc func handlePan(_ sender: UIPanGestureRecognizer) {
         switch sender.state {
         case .ended, .cancelled:
@@ -110,6 +121,9 @@ open class NoiseController {
         
         view.autoresizingMask = [.flexibleWidth]
         controller.view.addSubview(view)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        view.addGestureRecognizer(tapGesture)
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
         view.addGestureRecognizer(panGesture)
         
         animatePresentation(presentation: true) { [unowned self] finished in

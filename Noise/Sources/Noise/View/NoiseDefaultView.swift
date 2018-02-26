@@ -59,15 +59,13 @@ class NoiseDefaultView: NoiseXibLoadView {
     fileprivate let DPDefaultNotififcationViewBottomOffset: CGFloat = 15
     fileprivate let DPDefaultNotififcationViewMaxHeight: CGFloat = 999
     fileprivate var DPDefaultNotififcationViewMinHeight: CGFloat = 44
-    var action = {}
     
-    required init(maxSize: CGSize, topOffset: CGFloat, message: String, title: String? = nil, icon: UIImage? = nil, callBack: @escaping (() -> ()) = {}) {
+    required init(maxSize: CGSize, topOffset: CGFloat, message: String, title: String? = nil, icon: UIImage? = nil) {
         super.init(frame: CGRect(origin: CGPoint.zero, size: maxSize))
         
         iconView.image    = icon
         messageLabel.text = message
         titleLabel.text   = title
-        action            = callBack
         
         DPDefaultNotififcationViewMinHeight = topOffset == 0 ? 50 : 44
         
@@ -92,17 +90,10 @@ class NoiseDefaultView: NoiseXibLoadView {
         contentView.frame               = newContentViewFrame
         
         updateFrames()
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapHandle(_:)))
-        addGestureRecognizer(tapGesture)
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-    }
-    
-    @objc func tapHandle(_ sender: UITapGestureRecognizer) {
-        action()
     }
     
     override func layoutSubviews() {
