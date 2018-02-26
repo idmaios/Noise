@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-open class NoiseXibLoadView: UIView {
+class NoiseXibLoadView: UIView {
     
     let xibName: String?
     @IBOutlet weak var view : UIView!
@@ -49,7 +49,7 @@ open class NoiseXibLoadView: UIView {
     }
 }
 
-open class NoiseDefaultView: NoiseXibLoadView {
+class NoiseDefaultView: NoiseXibLoadView {
     
     @IBOutlet var iconView: UIImageView!
     @IBOutlet var messageLabel: UILabel!
@@ -134,5 +134,5 @@ open class NoiseDefaultView: NoiseXibLoadView {
     }
 }
 
-open class NoiseDefaultBluredView: NoiseDefaultView {
+class NoiseDefaultBluredView: NoiseDefaultView {
 }
