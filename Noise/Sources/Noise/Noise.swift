@@ -43,6 +43,11 @@ open class Noise: NSObject {
     }
     
     @objc
+    open class func showNotificationWith(title: String?, message: String, icon: UIImage?, type: NoiseType, textAlignment: NSTextAlignment) {
+        Noise.generalShowWith(message: message, title: title, icon: icon, type: type, textAlignment: textAlignment)
+    }
+    
+    @objc
     open class func showNotificationWith(title: String?, message: String, icon: UIImage?, viewController: UIViewController?) {
         Noise.generalShowWith(message: message, title: title, icon: icon, inViewController: viewController)
     }
@@ -85,6 +90,7 @@ open class Noise: NSObject {
                                backgroundColor: UIColor? = nil,
                                inViewController viewController: UIViewController? = nil,
                                type: NoiseType = .default,
+                               textAlignment: NSTextAlignment = .left,
                                action: (() -> Bool)? = nil) -> NoiseController {
     
         let controller = NoiseController() { (maxSize, topOffset) in
@@ -107,6 +113,9 @@ open class Noise: NSObject {
                     }
                 }
             }
+            
+            view.titleLabel.textAlignment = textAlignment
+            view.messageLabel.textAlignment = textAlignment
             return view
         }
         controller.tapClosure = action

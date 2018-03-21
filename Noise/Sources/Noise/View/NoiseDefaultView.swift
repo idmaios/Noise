@@ -122,6 +122,7 @@ class NoiseDefaultView: NoiseXibLoadView {
 
             newFrame             = messageLabel.frame
             newFrame.origin.y    = titleLabel.text == nil ? diff : titleLabel.frame.maxY
+            newFrame.size.width  = bounds.width  - newFrame.origin.x - view.layoutMargins.right
             newFrame.size.height = messageLabelHeight
             messageLabel.frame   = newFrame
         }
