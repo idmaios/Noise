@@ -86,7 +86,6 @@ class NoiseDefaultView: NoiseXibLoadView {
         
         var newContentViewFrame         = contentView.frame
         newContentViewFrame.origin.y    = topOffset
-        newContentViewFrame.size.height -= topOffset
         contentView.frame               = newContentViewFrame
         
         updateFrames()
@@ -122,7 +121,7 @@ class NoiseDefaultView: NoiseXibLoadView {
 
             newFrame             = messageLabel.frame
             newFrame.origin.y    = titleLabel.text == nil ? diff : titleLabel.frame.maxY
-            newFrame.size.width  = bounds.width  - newFrame.origin.x - view.layoutMargins.right
+            newFrame.size.width  = contentView.bounds.width  - newFrame.origin.x - view.layoutMargins.right
             newFrame.size.height = messageLabelHeight
             messageLabel.frame   = newFrame
         }
@@ -132,6 +131,10 @@ class NoiseDefaultView: NoiseXibLoadView {
         frame = newFrame
         
         view.frame = bounds
+        
+        newContentViewFrame             = contentView.frame
+        newContentViewFrame.size.height = view.bounds.height - contentView.frame.origin.y
+        contentView.frame               = newContentViewFrame
     }
 }
 
