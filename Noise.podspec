@@ -1,11 +1,11 @@
 Pod::Spec.new do |s|
   s.name          = "Noise"
-  s.version       = "0.4.2"
+  s.version       = "0.4.3"
   s.summary       = "iOS in application notifications. Based on NSOperationQueue."
   s.homepage      = "https://github.com/idmaios/Noise"
   s.license       = 'MIT'
   s.author        = { "spromicky" => "spromicky@gmail.com" }
-  s.source        = { :git => "https://github.com/idmaios/Noise", :tag => s.version.to_s }
+  s.source        = { :git => "https://github.com/idmaios/Noise.git", :tag => s.version.to_s }
 
   s.swift_version = '4.0'
   s.platform      = :ios, '11.0'
