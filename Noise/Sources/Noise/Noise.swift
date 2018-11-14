@@ -20,7 +20,7 @@ public enum NoiseType: Int {
 @objc
 open class Noise: NSObject {
     
-    open static let DefaultNotificationDuration = 2.0
+    public static let DefaultNotificationDuration = 2.0
     
     @objc
     open class func showNotificationWith(message: String) {
