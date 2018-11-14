@@ -112,7 +112,13 @@ open class NoiseController {
         guard controller == topViewController || controller == topViewControllerInNavigationController else { finishNotification(); return }
         topViewController = controller
         
-        var topOffset = topViewController?.view.safeAreaInsets.top ?? 0
+        var topOffset: CGFloat = 0
+        if #available(iOS 11.0, *) {
+            topOffset = topViewController?.view.safeAreaInsets.top ?? 0
+        } else {
+            topOffset = topViewController?.topLayoutGuide.length ?? 0
+        }
+            
         if let viewController = topViewController?.navigationController, !viewController.isNavigationBarHidden {
             topOffset = 0
         }
